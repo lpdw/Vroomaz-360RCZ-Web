@@ -11,8 +11,8 @@ gcmq = require('gulp-group-css-media-queries');
 //Paths
 var paths = {
   styles: {
-    src: 'src/scss/**/*.scss',
-    dest: 'dist/css'
+    src: 'src/sass/*.sass',
+    dest: 'public/stylesheets'
   },
   scripts: {
     src: [],
@@ -40,9 +40,10 @@ gulp.task('styles', function () {
   .pipe(plumber(plumberErrorHandler))
   .pipe(sassGlob())
   .pipe(sass({ outputStyle : 'expanded' }))
-  .pipe(concat( 'main.css' ))
+  .pipe(concat( 'index.css' ))
   .pipe(gcmq())
-  .pipe(gulp.dest(paths.styles.dest));
+  .pipe(gulp.dest(paths.styles.dest))
+  .pipe(livereload());
 
 });
 
