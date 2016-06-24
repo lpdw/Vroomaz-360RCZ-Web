@@ -15,8 +15,8 @@ var paths = {
     dest: 'public/stylesheets'
   },
   scripts: {
-    src: [],
-    dest: 'dist/js'
+    src: 'src/javascripts/*.js',
+    dest: 'public/javascripts'
   },
 };
 
@@ -32,6 +32,17 @@ var plumberErrorHandler = { errorHandler: notify.onError({
   message: "Error: <%= error.message %>"
 })
 };
+
+// Scripts
+gulp.task('scripts', function () {
+
+  return gulp.src(paths.scripts.src)
+  .pipe(plumber(plumberErrorHandler))
+  .pipe(concat('main.js'))
+  .pipe(gulp.dest(paths.scripts.dest))
+  .pipe(livereload());
+
+});
 
 // Styles
 gulp.task('styles', function () {
