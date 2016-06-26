@@ -1,8 +1,9 @@
 var lastEvent;
+var controlServer = "http://192.168.1.240";
 
 function go() {
   $.ajax({
-    url: "http://192.168.1.240/start"
+    url: controlServer + "/start"
   })
   .done(function (msg) {
     console.log(msg);
@@ -11,7 +12,7 @@ function go() {
 
 function back() {
   $.ajax({
-    url: "http://192.168.1.240/back"
+    url: controlServer + "/back"
   })
   .done(function (msg) {
     console.log(msg);
@@ -20,7 +21,7 @@ function back() {
 
 function stop() {
   $.ajax({
-    url: "http://192.168.1.240/stop"
+    url: controlServer + "/stop"
   })
   .done(function (msg) {
     console.log(msg);
@@ -29,7 +30,7 @@ function stop() {
 
 function left() {
   $.ajax({
-    url: "http://192.168.1.240/left"
+    url: controlServer + "/left"
   })
   .done(function (msg) {
     console.log(msg);
@@ -38,7 +39,7 @@ function left() {
 
 function right() {
   $.ajax({
-    url: "http://192.168.1.240/left"
+    url: controlServer + "/left"
   })
   .done(function (msg) {
     console.log(msg);
