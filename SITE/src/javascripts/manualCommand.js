@@ -1,5 +1,5 @@
 var lastEvent;
-var controlServer = "http://192.168.1.240";
+var controlServer = "http://192.168.1.239";
 
 function start() {
   $.ajax({
@@ -166,7 +166,7 @@ function reportOnGamepad() {
       }
 
       switch(xinput[i]) {
-        case "LEFT": // left
+        case "RIGHT": // left
           console.log('left');
           left();
           lastEventGP = i;
@@ -178,7 +178,7 @@ function reportOnGamepad() {
           lastEventGP = i;
           break;
 
-        case "RIGHT": // right
+        case "LEFT": // right
           console.log('right');
           right();
           lastEventGP = i;
