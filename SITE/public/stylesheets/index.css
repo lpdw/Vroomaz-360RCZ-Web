@@ -39,7 +39,7 @@
   font-weight: bold;
   font-size: 1.5em;
   text-decoration: none;
-  color: yellow;
+  color: black;
   transition: color 0.5s
 }
 
@@ -48,13 +48,22 @@
   color: #d2281e
 }
 
+.home .content img {
+  height: 100px;
+  width: auto
+}
+
+body {
+  margin: 0
+}
+
 hr {
   border-color: black
 }
 
 .content {
   background-color: red;
-  height: 100vh
+  height: calc(100vh - 104px)
 }
 
 .top-bottom-border {
@@ -103,11 +112,16 @@ hr {
   font-weight: bold;
   font-size: 1.5em;
   text-decoration: none;
-  color: yellow;
+  color: black;
   transition: color 0.5s
 }
 
 .navbar nav ul a:hover {
   transition: color 0.5s, decoration 1s;
   color: #d2281e
+}
+
+.home .content img {
+  height: 100px;
+  width: auto
 }

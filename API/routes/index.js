@@ -1,5 +1,8 @@
 var express = require('express');
 var router = express.Router();
+//var controlServer = "http://192.168.1.240";
+var controlServer = "http://requestb.in/okimoqok";
+var request = require('request');
 
 /* index */
 router.get('/', function(req, res, next) {
@@ -7,28 +10,66 @@ router.get('/', function(req, res, next) {
 });
 
 /* FORWARD */
-router.post('/forward', function(req, res) {
-
+router.post('/start', function(req, res) {
+  request.post(controlServer, function (error, response, body) {
+    if (!error) {
+      res.status(200).send({command: 'forward'});
+    }
+  });
 });
 
 /* BACKWARD */
-router.post('/backward', function(req, res) {
-
+router.post('/back', function(req, res) {
+  request.post(controlServer, function (error, response, body) {
+    if (!error) {
+      res.status(200).send({command: 'backward'});
+    }
+  });
 });
 
 /* LEFT */
 router.post('/left', function(req, res) {
-
+  request.post(controlServer, function (error, response, body) {
+    if (!error) {
+      res.status(200).send({command: 'left'});
+    }
+  });
 });
 
 /* RIGHT */
 router.post('/right', function(req, res) {
-
+  request.post(controlServer, function (error, response, body) {
+    if (!error) {
+      res.status(200).send({command: 'right'});
+    }
+  });
 });
 
 /* STOP */
 router.post('/stop', function(req, res) {
+  request.post(controlServer, function (error, response, body) {
+    if (!error) {
+      res.status(200).send({command: 'stop'});
+    }
+  });
+});
 
+/* Mode auto */
+router.post('/mode/auto', function(req, res) {
+  request.post(controlServer, function (error, response, body) {
+    if (!error) {
+      res.status(200).send({command: 'auto mode'});
+    }
+  });
+});
+
+/* Mode manual command */
+router.post('/mode/man', function(req, res) {
+  request.post(controlServer, function (error, response, body) {
+    if (!error) {
+      res.status(200).send({command: 'manual mode'});
+    }
+  });
 });
 
 /* POST CONFIG */
