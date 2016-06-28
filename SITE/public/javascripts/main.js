@@ -1,126 +1,130 @@
-var lastEvent;
-var controlServer = "http://192.168.1.239";
+//Ajax calls
 
+var lastEvent; //var used for key detection
+
+var controlServer = "http://localhost:3001";
+
+//Moving forward
 function start() {
   $.ajax({
-    url: controlServer + "/start"
+    url: controlServer + "/start",
+    method: "POST"
   })
   .done(function (msg) {
     console.log(msg);
+    $("#forward-button").addClass("activated");
   });
 }
 
+
+//Moving backward
 function back() {
   $.ajax({
-    url: controlServer + "/back"
+    url: controlServer + "/back",
+    method: "POST"
   })
   .done(function (msg) {
     console.log(msg);
+    $("#backward-button").addClass("activated");
   });
 }
 
-function stop() {
+
+//Stop all
+function stop(callback) {
   $.ajax({
-    url: controlServer + "/stop"
+    url: controlServer + "/stop",
+    method: "POST"
   })
   .done(function (msg) {
     console.log(msg);
+    $("#left-button").removeClass("activated");
+    $("#right-button").removeClass("activated");
+    $("#backward-button").removeClass("activated");
+    $("#forward-button").removeClass("activated");
+    $("#avg").removeClass("turn-left");
+    $("#avd").removeClass("turn-left");
+    $("#avg").removeClass("turn-right");
+    $("#avd").removeClass("turn-right");
+    if(callback) callback();
   });
 }
 
+
+//Turn left
 function left() {
   $.ajax({
-    url: controlServer + "/left"
+    url: controlServer + "/left",
+    method: "POST"
   })
   .done(function (msg) {
     console.log(msg);
+    $("#avg").addClass("turn-left");
+    $("#avd").addClass("turn-left");
+    $("#left-button").addClass("activated");
   });
 }
 
+
+//Turn right
 function right() {
   $.ajax({
-    url: controlServer + "/right"
+    url: controlServer + "/right",
+    method: "POST"
   })
   .done(function (msg) {
     console.log(msg);
+    $("#avg").addClass("turn-right");
+    $("#avd").addClass("turn-right");
+    $("#right-button").addClass("activated");
   });
 }
 
-$(document).keydown(function(e) {
-  if($('body').is('.manualCommand')){
+//Html buttons support
+var pressedButon = false;
 
-    //EXIT: Pour éviter le spam si on reste appuyé sur la même touche
-    if (lastEvent) return;
-
-    switch(e.which) {
-      case 37: // left
-        console.log('left');
-        left();
-        lastEvent = e;
-        break;
-
-      case 38: // forward
-        console.log('forward');
-        start();
-        lastEvent = e;
-        break;
-
-      case 39: // right
-        console.log('right');
-        right();
-        lastEvent = e;
-        break;
-
-      case 40: // backward
-        console.log('backward');
-        back();
-        lastEvent = e;
-        break;
-
-      default: return; // exit this handler for other keys
-    }
-    e.preventDefault(); // prevent the default action (scroll / move caret)
+$("#forward-button").click(function(){
+  if(pressedButon){
+    stop(start);
+  } else {
+    start();
   }
+  pressedButon = true;
 });
 
-$(document).keyup(function(e) {
-  if($('body').is('.manualCommand')){
-
-    //EXIT: Si on appuie sur d'autre touche, pas d'effet
-    if (lastEvent && lastEvent.keyCode != e.keyCode) return;
-
-    switch(e.which) {
-      case 37: // left
-        console.log('stop left');
-        stop();
-        lastEvent = null;
-        break;
-
-      case 38: // up
-        console.log('stop up');
-        stop();
-        lastEvent = null;
-        break;
-
-      case 39: // right
-        console.log('stop right');
-        stop();
-        lastEvent = null;
-        break;
-
-      case 40: // down
-        console.log('stop down');
-        stop();
-        lastEvent = null;
-        break;
-
-      default: return; // exit this handler for other keys
-    }
-    e.preventDefault(); // prevent the default action (scroll / move caret)
+$("#backward-button").click(function(){
+  if(pressedButon){
+    stop(back);
+  } else {
+    back();
   }
+  pressedButon = true;
 });
 
-// GAMEPAD SUPPORT
+$("#left-button").click(function(){
+  if(pressedButon){
+    stop(left);
+  } else {
+    left();
+  }
+  pressedButon = true;
+});
+
+$("#right-button").click(function(){
+  if(pressedButon){
+    stop(right);
+  } else {
+    right();
+  }
+  pressedButon = true;
+});
+
+$("#stop-button").click(function(){
+  stop();
+  pressedButon = true;
+});
+
+//Gamepad support
 
 var hasGP = false;
 var repGP;
@@ -279,4 +283,75 @@ $(document).ready(function() {
     // }, 500);
   }
 
+});
+
+//Keyboard support
+
+$(document).keydown(function(e) {
+  if($('body').is('.command')){
+    if (lastEvent) return;
+
+    switch(e.which) {
+      case 37: // left
+        console.log('left');
+        left();
+        lastEvent = e;
+        break;
+
+      case 38: // forward
+        console.log('forward');
+        start();
+        lastEvent = e;
+        break;
+
+      case 39: // right
+        console.log('right');
+        right();
+        lastEvent = e;
+        break;
+
+      case 40: // backward
+        console.log('backward');
+        back();
+        lastEvent = e;
+        break;
+
+      default: return; // exit this handler for other keys
+    }
+    e.preventDefault(); // prevent the default action (scroll / move caret)
+  }
+});
+
+$(document).keyup(function(e) {
+  if($('body').is('.command')){
+    if (lastEvent && lastEvent.keyCode != e.keyCode) return;
+    switch(e.which) {
+      case 37: // left
+        console.log('stop left');
+        stop();
+        lastEvent = null;
+        break;
+
+      case 38: // up
+        console.log('stop up');
+        stop();
+        lastEvent = null;
+        break;
+
+      case 39: // right
+        console.log('stop right');
+        stop();
+        lastEvent = null;
+        break;
+
+      case 40: // down
+        console.log('stop down');
+        stop();
+        lastEvent = null;
+        break;
+
+      default: return; // exit this handler for other keys
+    }
+    e.preventDefault(); // prevent the default action (scroll / move caret)
+  }
 });

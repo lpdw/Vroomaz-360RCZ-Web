@@ -3,17 +3,15 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index');
+  res.render('home');
 });
 
-router.get('/manualCommand', function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.render('manualCommand');
+router.get('/command', function(req, res, next) {
+  res.render('command');
 });
 
-router.get('/mazeResolution', function(req, res, next) {
-  res.render('mazeResolution');
+router.get('/maze', function(req, res, next) {
+  res.render('maze');
 });
 
 module.exports = router;

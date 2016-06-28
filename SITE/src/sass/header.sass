@@ -1,6 +1,6 @@
 .navbar
   height: 100px
-  background-color: rgba(255,255,75,0.5)
+  background-color: rgba(255,255,75,0.3)
   overflow: hidden
   img
     float: left
@@ -8,27 +8,84 @@
   nav
     float: right
     width: calc(100% - 300px)
-    height: 4.5em
-    line-height: 4.5em
-    white-space: nowrap
     ul
       text-align: center
+      vertical-align: bottom
+      line-height: 4.5em
+      margin-top: 0px
+      //padding-top: 30px
       list-style: none
       margin-left: -50px
       min-width: 500px
+      height: 100px
       li
+        transition: background-color 0.5s
         display: inline
-        margin-left: 20px
+        padding: 30px 20px 0 20px
+        height: 100%
+        display: inline-block
+        margin: 0
         img
           height: 16px
           width: auto
+      li:nth-child(1)
+        border-left: 2px solid rgba(0,0,0,0.2)
+        margin-right: -5px
+      li:nth-child(2)
+        border-left: 2px solid rgba(0,0,0,0.2)
+        border-right: 2px solid rgba(0,0,0,0.2)
+      li:nth-child(3)
+        margin-left: -5px
+        border-right: 2px solid rgba(0,0,0,0.2)
       a
-        font-family: 'verdana'
+        font-family: 'Boogaloo'
         font-weight: bold
-        font-size: 1.5em
+        font-size: 2em
         text-decoration: none
         color: black
         transition: color 0.5s
-      a:hover
-        transition: color 0.5s, decoration 1s
-        color: rgb(210,40,30)
+        position: relative
+      #home::before
+        content: "\f015"
+        position: absolute
+        font-family: fontawesome
+        font-size: 36px
+        bottom: 25px
+        left: calc(50% - 18px)
+      #command::before
+        content: "\f047"
+        position: absolute
+        font-family: fontawesome
+        font-size: 36px
+        bottom: 25px
+        left: calc(50% - 18px)
+      #maze::before
+        content: "\f20b"
+        position: absolute
+        font-family: fontawesome
+        font-size: 36px
+        bottom: 25px
+        left: calc(50% - 18px)
+      li:hover
+        transition: background-color 0.5s
+        background-color: rgba(201, 210, 31, 0.5)
+        a
+          transition: color 0.5s, decoration 1s
+
+.home
+  .navbar
+    li
+      #home
+        color: rgba(255, 161, 0, 0.8)
+
+.command
+  .navbar
+    li
+      #command
+        color: rgba(255, 161, 0, 0.8)
+
+.maze
+  .navbar
+    li
+      #maze
+        color: rgba(255, 161, 0, 0.8)
