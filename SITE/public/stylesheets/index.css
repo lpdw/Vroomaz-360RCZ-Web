@@ -1,11 +1,11 @@
 html {
   -webkit-tap-highlight-color: transparent;
-  tap-highlight-color: transparent
+  tap-highlight-color: transparent;
 }
 
 button:hover,
 button:active {
-  outline: 0
+  outline: 0;
 }
 
 button.depth {
@@ -19,62 +19,70 @@ button.depth {
   height: 80px;
   padding: 0;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.25), 0 -1px 1px rgba(0, 0, 0, 0.75);
-  width: 80px
+  width: 80px;
 }
 
 button:hover,
 button:focus {
   color: #0ab;
-  text-shadow: 0 0 20px rgba(143, 143, 239, 0.5), 0 1px 1px rgba(255, 255, 255, 0.25), 0 -1px 1px rgba(0, 0, 0, 0.75)
+  text-shadow: 0 0 20px rgba(143, 143, 239, 0.5), 0 1px 1px rgba(255, 255, 255, 0.25), 0 -1px 1px rgba(0, 0, 0, 0.75);
 }
 
 button:focus {
-  outline: none
+  outline: none;
 }
 
 button:active {
   box-shadow: inset 0 0 2px 2px rgba(0, 0, 0, 0.2), inset 0 0 2px 4px rgba(0, 0, 0, 0.2), inset 0 0 2px 6px rgba(0, 0, 0, 0.2), inset 0 0 1px 7px rgba(0, 0, 0, 0.5), inset 0 5px 15px 7px rgba(0, 0, 0, 0.15), inset 0 -4px 2px 3px rgba(0, 0, 0, 0.5), inset 0 1px 1px 7px rgba(255, 255, 255, 0.25), inset 0 -30px 30px rgba(0, 0, 0, 0.1), inset 0 30px 30px rgba(0, 0, 0, 0.2), 0 -4px 8px 4px rgba(0, 0, 0, 0.5), 0 5px 10px rgba(0, 0, 0, 0.25), 0 0 2px 2px rgba(0, 0, 0, 0.2), 0 0 2px 4px rgba(0, 0, 0, 0.2), 0 0 2px 6px rgba(0, 0, 0, 0.2), 0 0 2px 8px rgba(0, 0, 0, 0.5), 0 1px 2px 8px rgba(255, 255, 255, 0.25), 0 -1px 2px 8px rgba(0, 0, 0, 0.5);
-  line-height: 86px
+  line-height: 86px;
 }
 
 button.activated {
   color: #0ab;
-  text-shadow: 0 0 20px rgba(143, 143, 239, 0.5), 0 1px 1px rgba(255, 255, 255, 0.25), 0 -1px 1px rgba(0, 0, 0, 0.75)
+  text-shadow: 0 0 20px rgba(143, 143, 239, 0.5), 0 1px 1px rgba(255, 255, 255, 0.25), 0 -1px 1px rgba(0, 0, 0, 0.75);
 }
 
+button[disabled=disabled],
+button:disabled {
+  color: red;
+}
+
+/* 3D Button */
+
 .pad {
-  margin: 0 0 0 50px;
+  margin: 50px 0 0 0;
   position: relative;
   width: 300px;
-  height: 300px
+  height: 300px;
+  float: right;
 }
 
 .pad #forward-button {
   position: absolute;
   top: 0;
   left: 50%;
-  transform: translateX(-50%)
+  transform: translateX(-50%);
 }
 
 .pad #backward-button {
   position: absolute;
   bottom: 0;
   left: 50%;
-  transform: translateX(-50%)
+  transform: translateX(-50%);
 }
 
 .pad #left-button {
   position: absolute;
   top: 50%;
   left: 0;
-  transform: translateY(-50%)
+  transform: translateY(-50%);
 }
 
 .pad #right-button {
   position: absolute;
   top: 50%;
   right: 0;
-  transform: translateY(-50%)
+  transform: translateY(-50%);
 }
 
 .pad #stop-button {
@@ -82,21 +90,21 @@ button.activated {
   top: 50%;
   right: 50%;
   transform: translate3d(50%, -50%, 0);
-  font-size: 20px
+  font-size: 20px;
 }
 
 .car {
-  width: 400px;
-  height: 600px;
+  min-width: 400px;
+  min-height: 600px;
   margin: auto;
   margin-right: 40px;
   position: relative;
-  float: right
+  float: right;
 }
 
 .commands {
-  width: 300px;
-  float: left
+  min-width: 300px;
+  float: left;
 }
 
 .roue {
@@ -108,68 +116,68 @@ button.activated {
   border-radius: 25%;
   background: linear-gradient(225deg, black 22px, #282828 22px, #282828 24px, transparent 24px, transparent 67px, #282828 67px, #282828 69px, transparent 69px), linear-gradient(135deg, black 22px, #282828 22px, #282828 24px, transparent 24px, transparent 67px, #282828 67px, #282828 69px, transparent 69px) 0 64px;
   background-color: black;
-  background-size: 64px 128px
+  background-size: 64px 128px;
 }
 
 .axe {
   width: 300px;
   height: 10px;
   background-color: black;
-  position: absolute
+  position: absolute;
 }
 
 #avaxe {
   top: 115px;
-  left: 40px
+  left: 40px;
 }
 
 #araxe {
   top: 490px;
-  left: 40px
+  left: 40px;
 }
 
 .av-d {
   top: 20px;
-  right: 0
+  right: 0;
 }
 
 .av-g {
   top: 20px;
-  left: 0
+  left: 0;
 }
 
 .ar-d {
   bottom: 0;
-  right: 0
+  right: 0;
 }
 
 .ar-g {
   bottom: 0;
-  left: 0
+  left: 0;
 }
 
 .turn-left {
-  transform: rotate(-20deg)
+  transform: rotate(-20deg);
 }
 
 .turn-right {
-  transform: rotate(20deg)
+  transform: rotate(20deg);
 }
 
 .navbar {
   height: 100px;
   background-color: rgba(255, 255, 75, 0.3);
-  overflow: hidden
+  overflow: hidden;
 }
 
 .navbar img {
   float: left;
-  width: 300px
+  width: 300px;
 }
 
 .navbar nav {
   float: right;
-  width: calc(100% - 300px)
+  width: calc(100% - 300px);
 }
 
 .navbar nav ul {
@@ -180,7 +188,7 @@ button.activated {
   list-style: none;
   margin-left: -50px;
   min-width: 500px;
-  height: 100px
+  height: 100px;
 }
 
 .navbar nav ul li {
@@ -189,27 +197,27 @@ button.activated {
   padding: 30px 20px 0 20px;
   height: 100%;
   display: inline-block;
-  margin: 0
+  margin: 0;
 }
 
 .navbar nav ul li img {
   height: 16px;
-  width: auto
+  width: auto;
 }
 
 .navbar nav ul li:nth-child(1) {
   border-left: 2px solid rgba(0, 0, 0, 0.2);
-  margin-right: -5px
+  margin-right: -5px;
 }
 
 .navbar nav ul li:nth-child(2) {
   border-left: 2px solid rgba(0, 0, 0, 0.2);
-  border-right: 2px solid rgba(0, 0, 0, 0.2)
+  border-right: 2px solid rgba(0, 0, 0, 0.2);
 }
 
 .navbar nav ul li:nth-child(3) {
   margin-left: -5px;
-  border-right: 2px solid rgba(0, 0, 0, 0.2)
+  border-right: 2px solid rgba(0, 0, 0, 0.2);
 }
 
 .navbar nav ul a {
@@ -219,7 +227,7 @@ button.activated {
   text-decoration: none;
   color: black;
   transition: color 0.5s;
-  position: relative
+  position: relative;
 }
 
 .navbar nav ul #home::before {
@@ -228,7 +236,7 @@ button.activated {
   font-family: fontawesome;
   font-size: 36px;
   bottom: 25px;
-  left: calc(50% - 18px)
+  left: calc(50% - 18px);
 }
 
 .navbar nav ul #command::before {
@@ -237,7 +245,7 @@ button.activated {
   font-family: fontawesome;
   font-size: 36px;
   bottom: 25px;
-  left: calc(50% - 18px)
+  left: calc(50% - 18px);
 }
 
 .navbar nav ul #maze::before {
@@ -246,61 +254,61 @@ button.activated {
   font-family: fontawesome;
   font-size: 36px;
   bottom: 25px;
-  left: calc(50% - 18px)
+  left: calc(50% - 18px);
 }
 
 .navbar nav ul li:hover {
   transition: background-color 0.5s;
-  background-color: rgba(201, 210, 31, 0.5)
+  background-color: rgba(201, 210, 31, 0.5);
 }
 
 .navbar nav ul li:hover a {
-  transition: color 0.5s, decoration 1s
+  transition: color 0.5s, decoration 1s;
 }
 
 .home .navbar li #home {
-  color: rgba(255, 161, 0, 0.8)
+  color: rgba(255, 161, 0, 0.8);
 }
 
 .command .navbar li #command {
-  color: rgba(255, 161, 0, 0.8)
+  color: rgba(255, 161, 0, 0.8);
 }
 
 .maze .navbar li #maze {
-  color: rgba(255, 161, 0, 0.8)
+  color: rgba(255, 161, 0, 0.8);
 }
 
 .home .content {
-  padding: 10px 0 0 10px
+  padding: 10px 0 0 10px;
 }
 
 .home .content h1 {
   margin: 0;
   padding: 10px 0 10px 35px;
   background-color: rgba(255, 255, 75, 0.1);
-  width: 80%
+  width: 80%;
 }
 
 .home .content #car {
   border: 2px solid black;
   margin: 20px 0 0 20px;
-  float: left
+  float: left;
 }
 
 .home .content #arduino {
   height: 75px;
   width: auto;
-  margin: 0 100px 0 50px
+  margin: 0 100px 0 50px;
 }
 
 .home .content #rasp {
   height: 100px;
   width: auto;
-  margin: 0 100px 0 0
+  margin: 0 100px 0 0;
 }
 
 .home .content #letmeknow {
-  transform: translateY(-50%)
+  transform: translateY(-50%);
 }
 
 .home .content .p-project {
@@ -308,24 +316,24 @@ button.activated {
   float: left;
   width: 50%;
   font-size: 1.5em;
-  font-family: 'Share'
+  font-family: 'Share';
 }
 
 .home .content .clearfix {
-  margin-bottom: 30px
+  margin-bottom: 30px;
 }
 
 .home .content .p-powered {
-  width: 100%
+  width: 100%;
 }
 
 body {
-  margin: 0
+  margin: 0;
 }
 
 .content {
   background-color: rgba(220, 20, 5, 0.7);
-  height: calc(100vh - 127px)
+  height: calc(100vh - 127px);
 }
 
 h1,
@@ -334,43 +342,43 @@ h2 {
   margin: 0;
   padding: 10px 0 10px 35px;
   background-color: rgba(255, 255, 75, 0.1);
-  width: 80%
+  width: 80%;
 }
 
 h1 {
-  font-size: 3em
+  font-size: 3em;
 }
 
 h2 {
-  font-size: 2em
+  font-size: 2em;
 }
 
 .bottom-border {
-  border-bottom: 2px solid black
+  border-bottom: 2px solid black;
 }
 
 .clearfix {
-  clear: both
+  clear: both;
 }
 
 hr {
-  border-color: black
+  border-color: black;
 }
 
 .navbar {
   height: 100px;
   background-color: rgba(255, 255, 75, 0.3);
-  overflow: hidden
+  overflow: hidden;
 }
 
 .navbar img {
   float: left;
-  width: 300px
+  width: 300px;
 }
 
 .navbar nav {
   float: right;
-  width: calc(100% - 300px)
+  width: calc(100% - 300px);
 }
 
 .navbar nav ul {
@@ -381,7 +389,7 @@ hr {
   list-style: none;
   margin-left: -50px;
   min-width: 500px;
-  height: 100px
+  height: 100px;
 }
 
 .navbar nav ul li {
@@ -390,27 +398,27 @@ hr {
   padding: 30px 20px 0 20px;
   height: 100%;
   display: inline-block;
-  margin: 0
+  margin: 0;
 }
 
 .navbar nav ul li img {
   height: 16px;
-  width: auto
+  width: auto;
 }
 
 .navbar nav ul li:nth-child(1) {
   border-left: 2px solid rgba(0, 0, 0, 0.2);
-  margin-right: -5px
+  margin-right: -5px;
 }
 
 .navbar nav ul li:nth-child(2) {
   border-left: 2px solid rgba(0, 0, 0, 0.2);
-  border-right: 2px solid rgba(0, 0, 0, 0.2)
+  border-right: 2px solid rgba(0, 0, 0, 0.2);
 }
 
 .navbar nav ul li:nth-child(3) {
   margin-left: -5px;
-  border-right: 2px solid rgba(0, 0, 0, 0.2)
+  border-right: 2px solid rgba(0, 0, 0, 0.2);
 }
 
 .navbar nav ul a {
@@ -420,7 +428,7 @@ hr {
   text-decoration: none;
   color: black;
   transition: color 0.5s;
-  position: relative
+  position: relative;
 }
 
 .navbar nav ul #home::before {
@@ -429,7 +437,7 @@ hr {
   font-family: fontawesome;
   font-size: 36px;
   bottom: 25px;
-  left: calc(50% - 18px)
+  left: calc(50% - 18px);
 }
 
 .navbar nav ul #command::before {
@@ -438,7 +446,7 @@ hr {
   font-family: fontawesome;
   font-size: 36px;
   bottom: 25px;
-  left: calc(50% - 18px)
+  left: calc(50% - 18px);
 }
 
 .navbar nav ul #maze::before {
@@ -447,61 +455,61 @@ hr {
   font-family: fontawesome;
   font-size: 36px;
   bottom: 25px;
-  left: calc(50% - 18px)
+  left: calc(50% - 18px);
 }
 
 .navbar nav ul li:hover {
   transition: background-color 0.5s;
-  background-color: rgba(201, 210, 31, 0.5)
+  background-color: rgba(201, 210, 31, 0.5);
 }
 
 .navbar nav ul li:hover a {
-  transition: color 0.5s, decoration 1s
+  transition: color 0.5s, decoration 1s;
 }
 
 .home .navbar li #home {
-  color: rgba(255, 161, 0, 0.8)
+  color: rgba(255, 161, 0, 0.8);
 }
 
 .command .navbar li #command {
-  color: rgba(255, 161, 0, 0.8)
+  color: rgba(255, 161, 0, 0.8);
 }
 
 .maze .navbar li #maze {
-  color: rgba(255, 161, 0, 0.8)
+  color: rgba(255, 161, 0, 0.8);
 }
 
 .home .content {
-  padding: 10px 0 0 10px
+  padding: 10px 0 0 10px;
 }
 
 .home .content h1 {
   margin: 0;
   padding: 10px 0 10px 35px;
   background-color: rgba(255, 255, 75, 0.1);
-  width: 80%
+  width: 80%;
 }
 
 .home .content #car {
   border: 2px solid black;
   margin: 20px 0 0 20px;
-  float: left
+  float: left;
 }
 
 .home .content #arduino {
   height: 75px;
   width: auto;
-  margin: 0 100px 0 50px
+  margin: 0 100px 0 50px;
 }
 
 .home .content #rasp {
   height: 100px;
   width: auto;
-  margin: 0 100px 0 0
+  margin: 0 100px 0 0;
 }
 
 .home .content #letmeknow {
-  transform: translateY(-50%)
+  transform: translateY(-50%);
 }
 
 .home .content .p-project {
@@ -509,29 +517,29 @@ hr {
   float: left;
   width: 50%;
   font-size: 1.5em;
-  font-family: 'Share'
+  font-family: 'Share';
 }
 
 .home .content .clearfix {
-  margin-bottom: 30px
+  margin-bottom: 30px;
 }
 
 .home .content .p-powered {
-  width: 100%
+  width: 100%;
 }
 
 .car {
-  width: 400px;
-  height: 600px;
+  min-width: 400px;
+  min-height: 600px;
   margin: auto;
   margin-right: 40px;
   position: relative;
-  float: right
+  float: right;
 }
 
 .commands {
-  width: 300px;
-  float: left
+  min-width: 300px;
+  float: left;
 }
 
 .roue {
@@ -543,56 +551,56 @@ hr {
   border-radius: 25%;
   background: linear-gradient(225deg, black 22px, #282828 22px, #282828 24px, transparent 24px, transparent 67px, #282828 67px, #282828 69px, transparent 69px), linear-gradient(135deg, black 22px, #282828 22px, #282828 24px, transparent 24px, transparent 67px, #282828 67px, #282828 69px, transparent 69px) 0 64px;
   background-color: black;
-  background-size: 64px 128px
+  background-size: 64px 128px;
 }
 
 .axe {
   width: 300px;
   height: 10px;
   background-color: black;
-  position: absolute
+  position: absolute;
 }
 
 #avaxe {
   top: 115px;
-  left: 40px
+  left: 40px;
 }
 
 #araxe {
   top: 490px;
-  left: 40px
+  left: 40px;
 }
 
 .av-d {
   top: 20px;
-  right: 0
+  right: 0;
 }
 
 .av-g {
   top: 20px;
-  left: 0
+  left: 0;
 }
 
 .ar-d {
   bottom: 0;
-  right: 0
+  right: 0;
 }
 
 .ar-g {
   bottom: 0;
-  left: 0
+  left: 0;
 }
 
 .turn-left {
-  transform: rotate(-20deg)
+  transform: rotate(-20deg);
 }
 
 .turn-right {
-  transform: rotate(20deg)
+  transform: rotate(20deg);
 }
 
 .command {
-
+  /* Switch on */
 }
 
 .command .switch {
@@ -603,7 +611,7 @@ hr {
   -webkit-box-shadow: 0 0 0.5em rgba(255, 255, 255, 0.2);
   -moz-box-shadow: 0 0 0.5em rgba(255, 255, 255, 0.2);
   box-shadow: 0 0 0.5em rgba(255, 255, 255, 0.2);
-  font-size: 8px
+  font-size: 8px;
 }
 
 .command .switch label {
@@ -615,11 +623,11 @@ hr {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 10
+  z-index: 10;
 }
 
 .command .switch input {
-  display: none
+  display: none;
 }
 
 .command .switch span {
@@ -628,7 +636,7 @@ hr {
   -moz-transition: top 0.2s;
   -ms-transition: top 0.2s;
   -o-transition: top 0.2s;
-  transition: top 0.2s
+  transition: top 0.2s;
 }
 
 .command .switch-border1 {
@@ -636,7 +644,7 @@ hr {
   border-radius: 3.5em;
   -webkit-box-shadow: 0 0.2em rgba(255, 255, 255, 0.2);
   -moz-box-shadow: 0 0.2em rgba(255, 255, 255, 0.2);
-  box-shadow: 0 0.2em rgba(255, 255, 255, 0.2)
+  box-shadow: 0 0.2em rgba(255, 255, 255, 0.2);
 }
 
 .command .switch-border2 {
@@ -650,7 +658,7 @@ hr {
   background-image: -ms-linear-gradient(left, #2D2D2D, #4B4B4B, #2D2D2D);
   background-image: -o-linear-gradient(left, #2D2D2D, #4B4B4B, #2D2D2D);
   background-image: linear-gradient(to right, #2D2D2D, #4B4B4B, #2D2D2D);
-  border-radius: 3.4em
+  border-radius: 3.4em;
 }
 
 .command .switch-border2:before,
@@ -664,7 +672,7 @@ hr {
   left: 0;
   z-index: 0;
   opacity: .3;
-  border-radius: 3.4em
+  border-radius: 3.4em;
 }
 
 .command .switch-border2:before {
@@ -673,7 +681,7 @@ hr {
   background: -moz-linear-gradient(#000, transparent);
   background: -ms-linear-gradient(#000, transparent);
   background: -o-linear-gradient(#000, transparent);
-  background: linear-gradient(#000, transparent)
+  background: linear-gradient(#000, transparent);
 }
 
 .command .switch-border2:after {
@@ -682,7 +690,7 @@ hr {
   background: -moz-linear-gradient(transparent, #000);
   background: -ms-linear-gradient(transparent, #000);
   background: -o-linear-gradient(transparent, #000);
-  background: linear-gradient(transparent, #000)
+  background: linear-gradient(transparent, #000);
 }
 
 .command .switch-top {
@@ -698,7 +706,7 @@ hr {
   background-image: -ms-linear-gradient(left, #2D2D2D, #4B4B4B, #2D2D2D);
   background-image: -o-linear-gradient(left, #2D2D2D, #4B4B4B, #2D2D2D);
   background-image: linear-gradient(to right, #2D2D2D, #4B4B4B, #2D2D2D);
-  border-radius: 3.4em
+  border-radius: 3.4em;
 }
 
 .command .switch-shadow {
@@ -711,7 +719,7 @@ hr {
   border-radius: 3.4em;
   -webkit-box-shadow: 0 0 2em black inset;
   -moz-box-shadow: 0 0 2em black inset;
-  box-shadow: 0 0 2em black inset
+  box-shadow: 0 0 2em black inset;
 }
 
 .command .switch-handle-left,
@@ -726,15 +734,15 @@ hr {
   border-bottom: 4.5em solid #111;
   border-left: 0.7em solid transparent;
   border-right: 0.7em solid transparent;
-  border-radius: 0
+  border-radius: 0;
 }
 
 .command .switch-handle-left {
-  left: 0.8em
+  left: 0.8em;
 }
 
 .command .switch-handle-right {
-  right: 0.8em
+  right: 0.8em;
 }
 
 .command .switch-handle {
@@ -751,7 +759,7 @@ hr {
   background-image: -ms-linear-gradient(left, #111, #777 40%, #888, #777 60%, #111);
   background-image: -o-linear-gradient(left, #111, #777 40%, #888, #777 60%, #111);
   background-image: linear-gradient(to right, #111, #777 40%, #888, #777 60%, #111);
-  border-radius: 0
+  border-radius: 0;
 }
 
 .command .switch-handle-top {
@@ -769,7 +777,7 @@ hr {
   background-image: -o-linear-gradient(left, #5F5F5F, #878787);
   background-image: linear-gradient(to right, #5F5F5F, #878787);
   border-top: 0.2em solid #AEB2B3;
-  border-radius: 2.5em
+  border-radius: 2.5em;
 }
 
 .command .switch-handle-bottom {
@@ -787,7 +795,7 @@ hr {
   background-image: -o-linear-gradient(left, #111, #777 40%, #888, #777 60%, #111);
   background-image: linear-gradient(to right, #111, #777 40%, #888, #777 60%, #111);
   border-top: 0.2em solid #141414;
-  border-radius: 1.8em
+  border-radius: 1.8em;
 }
 
 .command .switch-handle-base {
@@ -801,32 +809,32 @@ hr {
   border-radius: 2.1em;
   -webkit-box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.8) inset;
   -moz-box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.8) inset;
-  box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.8) inset
+  box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.8) inset;
 }
 
 .command .switch-led {
   position: absolute;
   left: 2em;
-  border-radius: 1.4em
+  border-radius: 1.4em;
 }
 
 .command .switch-led-border {
   border: 0.2em solid black;
-  border-radius: 1.3em
+  border-radius: 1.3em;
 }
 
 .command .switch-led-light {
   border-radius: 1.1em;
   -webkit-box-shadow: 0 0 0.5em rgba(255, 255, 255, 0.5) inset;
   -moz-box-shadow: 0 0 0.5em rgba(255, 255, 255, 0.5) inset;
-  box-shadow: 0 0 0.5em rgba(255, 255, 255, 0.5) inset
+  box-shadow: 0 0 0.5em rgba(255, 255, 255, 0.5) inset;
 }
 
 .command .switch-led-glow {
   width: 2em;
   height: 2em;
   position: relative;
-  border-radius: 1em
+  border-radius: 1em;
 }
 
 .command .switch-led-glow:before {
@@ -841,7 +849,7 @@ hr {
   border-radius: 0.3em;
   -webkit-box-shadow: 0 0 1em rgba(255, 255, 255, 0.75);
   -moz-box-shadow: 0 0 1em rgba(255, 255, 255, 0.75);
-  box-shadow: 0 0 1em rgba(255, 255, 255, 0.75)
+  box-shadow: 0 0 1em rgba(255, 255, 255, 0.75);
 }
 
 .command .switch-led-glow:after {
@@ -861,7 +869,7 @@ hr {
   -moz-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   -o-transform: rotate(45deg);
-  transform: rotate(45deg)
+  transform: rotate(45deg);
 }
 
 .command .switch-led:after {
@@ -873,28 +881,28 @@ hr {
   font-family: arial, verdana, sans-serif;
   font-weight: bold;
   text-align: center;
-  text-shadow: 0 0.1em rgba(0, 0, 0, 0.7)
+  text-shadow: 0 0.1em rgba(0, 0, 0, 0.7);
 }
 
 .command .switch-led-green:after {
   content: 'ON';
-  top: -1.8em
+  top: -1.8em;
 }
 
 .command .switch-led-red:after {
   content: 'OFF';
-  bottom: -1.8em
+  bottom: -1.8em;
 }
 
 .command .switch-led-green {
   top: -5em;
   border-top: 0.1em solid rgba(0, 161, 75, 0.5);
-  border-bottom: 0.1em solid rgba(255, 255, 255, 0.25)
+  border-bottom: 0.1em solid rgba(255, 255, 255, 0.25);
 }
 
 .command .switch-led-green .switch-led-light {
   background: #00a14b;
-  border: 0.1em solid #006838
+  border: 0.1em solid #006838;
 }
 
 .command .switch-led-red {
@@ -903,80 +911,80 @@ hr {
   border-bottom: 0.1em solid rgba(255, 255, 255, 0.25);
   -webkit-box-shadow: 0 0 3em #ed1c24;
   -moz-box-shadow: 0 0 3em #ed1c24;
-  box-shadow: 0 0 3em #ed1c24
+  box-shadow: 0 0 3em #ed1c24;
 }
 
 .command .switch-led-red .switch-led-light {
   background: #ed1c24;
-  border: 0.1em solid #a11e2d
+  border: 0.1em solid #a11e2d;
 }
 
 .command .switch-led-red .switch-led-glow {
   background: #fff;
   background: rgba(255, 255, 255, 0.3);
-  filter: alpha(opacity=30)
+  filter: alpha(opacity=30);
 }
 
 .command .switch input:checked ~ .switch-handle-left,
 .command .switch input:checked ~ .switch-handle-right {
   top: 1.5em;
   border-bottom: 0;
-  border-top: 4.5em solid #111
+  border-top: 4.5em solid #111;
 }
 
 .command .switch input:checked ~ .switch-handle {
-  top: 1.5em
+  top: 1.5em;
 }
 
 .command .switch input:checked ~ .switch-handle-top {
   top: -1em;
   border-top: 0;
-  border-bottom: 0.2em solid #AEB2B3
+  border-bottom: 0.2em solid #AEB2B3;
 }
 
 .command .switch input:checked ~ .switch-handle-bottom {
   top: 4.2em;
   border-top: 0;
-  border-bottom: 0.2em solid #141414
+  border-bottom: 0.2em solid #141414;
 }
 
 .command .switch input:checked ~ .switch-handle-base {
   top: 4.5em;
   border-top: 0;
-  border-bottom: 0.2em solid rgba(255, 255, 255, 0.35)
+  border-bottom: 0.2em solid rgba(255, 255, 255, 0.35);
 }
 
 .command .switch input:checked ~ .switch-led-green {
   -webkit-box-shadow: 0 0 3em #00a14b;
   -moz-box-shadow: 0 0 3em #00a14b;
-  box-shadow: 0 0 3em #00a14b
+  box-shadow: 0 0 3em #00a14b;
 }
 
 .command .switch input:checked ~ .switch-led-green .switch-led-glow {
   background: #fff;
   background: rgba(255, 255, 255, 0.4);
-  filter: alpha(opacity=40)
+  filter: alpha(opacity=40);
 }
 
 .command .switch input:checked ~ .switch-led-red {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
-  box-shadow: none
+  box-shadow: none;
 }
 
 .command .switch input:checked ~ .switch-led-red .switch-led-glow {
   background: rgba(255, 255, 255, 0);
-  filter: alpha(opacity=0)
+  filter: alpha(opacity=0);
 }
 
 html {
   -webkit-tap-highlight-color: transparent;
-  tap-highlight-color: transparent
+  tap-highlight-color: transparent;
 }
 
 button:hover,
 button:active {
-  outline: 0
+  outline: 0;
 }
 
 button.depth {
@@ -990,62 +998,70 @@ button.depth {
   height: 80px;
   padding: 0;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.25), 0 -1px 1px rgba(0, 0, 0, 0.75);
-  width: 80px
+  width: 80px;
 }
 
 button:hover,
 button:focus {
   color: #0ab;
-  text-shadow: 0 0 20px rgba(143, 143, 239, 0.5), 0 1px 1px rgba(255, 255, 255, 0.25), 0 -1px 1px rgba(0, 0, 0, 0.75)
+  text-shadow: 0 0 20px rgba(143, 143, 239, 0.5), 0 1px 1px rgba(255, 255, 255, 0.25), 0 -1px 1px rgba(0, 0, 0, 0.75);
 }
 
 button:focus {
-  outline: none
+  outline: none;
 }
 
 button:active {
   box-shadow: inset 0 0 2px 2px rgba(0, 0, 0, 0.2), inset 0 0 2px 4px rgba(0, 0, 0, 0.2), inset 0 0 2px 6px rgba(0, 0, 0, 0.2), inset 0 0 1px 7px rgba(0, 0, 0, 0.5), inset 0 5px 15px 7px rgba(0, 0, 0, 0.15), inset 0 -4px 2px 3px rgba(0, 0, 0, 0.5), inset 0 1px 1px 7px rgba(255, 255, 255, 0.25), inset 0 -30px 30px rgba(0, 0, 0, 0.1), inset 0 30px 30px rgba(0, 0, 0, 0.2), 0 -4px 8px 4px rgba(0, 0, 0, 0.5), 0 5px 10px rgba(0, 0, 0, 0.25), 0 0 2px 2px rgba(0, 0, 0, 0.2), 0 0 2px 4px rgba(0, 0, 0, 0.2), 0 0 2px 6px rgba(0, 0, 0, 0.2), 0 0 2px 8px rgba(0, 0, 0, 0.5), 0 1px 2px 8px rgba(255, 255, 255, 0.25), 0 -1px 2px 8px rgba(0, 0, 0, 0.5);
-  line-height: 86px
+  line-height: 86px;
 }
 
 button.activated {
   color: #0ab;
-  text-shadow: 0 0 20px rgba(143, 143, 239, 0.5), 0 1px 1px rgba(255, 255, 255, 0.25), 0 -1px 1px rgba(0, 0, 0, 0.75)
+  text-shadow: 0 0 20px rgba(143, 143, 239, 0.5), 0 1px 1px rgba(255, 255, 255, 0.25), 0 -1px 1px rgba(0, 0, 0, 0.75);
 }
 
+button[disabled=disabled],
+button:disabled {
+  color: red;
+}
+
+/* 3D Button */
+
 .pad {
-  margin: 0 0 0 50px;
+  margin: 50px 0 0 0;
   position: relative;
   width: 300px;
-  height: 300px
+  height: 300px;
+  float: right;
 }
 
 .pad #forward-button {
   position: absolute;
   top: 0;
   left: 50%;
-  transform: translateX(-50%)
+  transform: translateX(-50%);
 }
 
 .pad #backward-button {
   position: absolute;
   bottom: 0;
   left: 50%;
-  transform: translateX(-50%)
+  transform: translateX(-50%);
 }
 
 .pad #left-button {
   position: absolute;
   top: 50%;
   left: 0;
-  transform: translateY(-50%)
+  transform: translateY(-50%);
 }
 
 .pad #right-button {
   position: absolute;
   top: 50%;
   right: 0;
-  transform: translateY(-50%)
+  transform: translateY(-50%);
 }
 
 .pad #stop-button {
@@ -1053,11 +1069,11 @@ button.activated {
   top: 50%;
   right: 50%;
   transform: translate3d(50%, -50%, 0);
-  font-size: 20px
+  font-size: 20px;
 }
 
 .command {
-
+  /* Switch on */
 }
 
 .command .switch {
@@ -1068,7 +1084,7 @@ button.activated {
   -webkit-box-shadow: 0 0 0.5em rgba(255, 255, 255, 0.2);
   -moz-box-shadow: 0 0 0.5em rgba(255, 255, 255, 0.2);
   box-shadow: 0 0 0.5em rgba(255, 255, 255, 0.2);
-  font-size: 8px
+  font-size: 8px;
 }
 
 .command .switch label {
@@ -1080,11 +1096,11 @@ button.activated {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 10
+  z-index: 10;
 }
 
 .command .switch input {
-  display: none
+  display: none;
 }
 
 .command .switch span {
@@ -1093,7 +1109,7 @@ button.activated {
   -moz-transition: top 0.2s;
   -ms-transition: top 0.2s;
   -o-transition: top 0.2s;
-  transition: top 0.2s
+  transition: top 0.2s;
 }
 
 .command .switch-border1 {
@@ -1101,7 +1117,7 @@ button.activated {
   border-radius: 3.5em;
   -webkit-box-shadow: 0 0.2em rgba(255, 255, 255, 0.2);
   -moz-box-shadow: 0 0.2em rgba(255, 255, 255, 0.2);
-  box-shadow: 0 0.2em rgba(255, 255, 255, 0.2)
+  box-shadow: 0 0.2em rgba(255, 255, 255, 0.2);
 }
 
 .command .switch-border2 {
@@ -1115,7 +1131,7 @@ button.activated {
   background-image: -ms-linear-gradient(left, #2D2D2D, #4B4B4B, #2D2D2D);
   background-image: -o-linear-gradient(left, #2D2D2D, #4B4B4B, #2D2D2D);
   background-image: linear-gradient(to right, #2D2D2D, #4B4B4B, #2D2D2D);
-  border-radius: 3.4em
+  border-radius: 3.4em;
 }
 
 .command .switch-border2:before,
@@ -1129,7 +1145,7 @@ button.activated {
   left: 0;
   z-index: 0;
   opacity: .3;
-  border-radius: 3.4em
+  border-radius: 3.4em;
 }
 
 .command .switch-border2:before {
@@ -1138,7 +1154,7 @@ button.activated {
   background: -moz-linear-gradient(#000, transparent);
   background: -ms-linear-gradient(#000, transparent);
   background: -o-linear-gradient(#000, transparent);
-  background: linear-gradient(#000, transparent)
+  background: linear-gradient(#000, transparent);
 }
 
 .command .switch-border2:after {
@@ -1147,7 +1163,7 @@ button.activated {
   background: -moz-linear-gradient(transparent, #000);
   background: -ms-linear-gradient(transparent, #000);
   background: -o-linear-gradient(transparent, #000);
-  background: linear-gradient(transparent, #000)
+  background: linear-gradient(transparent, #000);
 }
 
 .command .switch-top {
@@ -1163,7 +1179,7 @@ button.activated {
   background-image: -ms-linear-gradient(left, #2D2D2D, #4B4B4B, #2D2D2D);
   background-image: -o-linear-gradient(left, #2D2D2D, #4B4B4B, #2D2D2D);
   background-image: linear-gradient(to right, #2D2D2D, #4B4B4B, #2D2D2D);
-  border-radius: 3.4em
+  border-radius: 3.4em;
 }
 
 .command .switch-shadow {
@@ -1176,7 +1192,7 @@ button.activated {
   border-radius: 3.4em;
   -webkit-box-shadow: 0 0 2em black inset;
   -moz-box-shadow: 0 0 2em black inset;
-  box-shadow: 0 0 2em black inset
+  box-shadow: 0 0 2em black inset;
 }
 
 .command .switch-handle-left,
@@ -1191,15 +1207,15 @@ button.activated {
   border-bottom: 4.5em solid #111;
   border-left: 0.7em solid transparent;
   border-right: 0.7em solid transparent;
-  border-radius: 0
+  border-radius: 0;
 }
 
 .command .switch-handle-left {
-  left: 0.8em
+  left: 0.8em;
 }
 
 .command .switch-handle-right {
-  right: 0.8em
+  right: 0.8em;
 }
 
 .command .switch-handle {
@@ -1216,7 +1232,7 @@ button.activated {
   background-image: -ms-linear-gradient(left, #111, #777 40%, #888, #777 60%, #111);
   background-image: -o-linear-gradient(left, #111, #777 40%, #888, #777 60%, #111);
   background-image: linear-gradient(to right, #111, #777 40%, #888, #777 60%, #111);
-  border-radius: 0
+  border-radius: 0;
 }
 
 .command .switch-handle-top {
@@ -1234,7 +1250,7 @@ button.activated {
   background-image: -o-linear-gradient(left, #5F5F5F, #878787);
   background-image: linear-gradient(to right, #5F5F5F, #878787);
   border-top: 0.2em solid #AEB2B3;
-  border-radius: 2.5em
+  border-radius: 2.5em;
 }
 
 .command .switch-handle-bottom {
@@ -1252,7 +1268,7 @@ button.activated {
   background-image: -o-linear-gradient(left, #111, #777 40%, #888, #777 60%, #111);
   background-image: linear-gradient(to right, #111, #777 40%, #888, #777 60%, #111);
   border-top: 0.2em solid #141414;
-  border-radius: 1.8em
+  border-radius: 1.8em;
 }
 
 .command .switch-handle-base {
@@ -1266,32 +1282,32 @@ button.activated {
   border-radius: 2.1em;
   -webkit-box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.8) inset;
   -moz-box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.8) inset;
-  box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.8) inset
+  box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.8) inset;
 }
 
 .command .switch-led {
   position: absolute;
   left: 2em;
-  border-radius: 1.4em
+  border-radius: 1.4em;
 }
 
 .command .switch-led-border {
   border: 0.2em solid black;
-  border-radius: 1.3em
+  border-radius: 1.3em;
 }
 
 .command .switch-led-light {
   border-radius: 1.1em;
   -webkit-box-shadow: 0 0 0.5em rgba(255, 255, 255, 0.5) inset;
   -moz-box-shadow: 0 0 0.5em rgba(255, 255, 255, 0.5) inset;
-  box-shadow: 0 0 0.5em rgba(255, 255, 255, 0.5) inset
+  box-shadow: 0 0 0.5em rgba(255, 255, 255, 0.5) inset;
 }
 
 .command .switch-led-glow {
   width: 2em;
   height: 2em;
   position: relative;
-  border-radius: 1em
+  border-radius: 1em;
 }
 
 .command .switch-led-glow:before {
@@ -1306,7 +1322,7 @@ button.activated {
   border-radius: 0.3em;
   -webkit-box-shadow: 0 0 1em rgba(255, 255, 255, 0.75);
   -moz-box-shadow: 0 0 1em rgba(255, 255, 255, 0.75);
-  box-shadow: 0 0 1em rgba(255, 255, 255, 0.75)
+  box-shadow: 0 0 1em rgba(255, 255, 255, 0.75);
 }
 
 .command .switch-led-glow:after {
@@ -1326,7 +1342,7 @@ button.activated {
   -moz-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   -o-transform: rotate(45deg);
-  transform: rotate(45deg)
+  transform: rotate(45deg);
 }
 
 .command .switch-led:after {
@@ -1338,28 +1354,28 @@ button.activated {
   font-family: arial, verdana, sans-serif;
   font-weight: bold;
   text-align: center;
-  text-shadow: 0 0.1em rgba(0, 0, 0, 0.7)
+  text-shadow: 0 0.1em rgba(0, 0, 0, 0.7);
 }
 
 .command .switch-led-green:after {
   content: 'ON';
-  top: -1.8em
+  top: -1.8em;
 }
 
 .command .switch-led-red:after {
   content: 'OFF';
-  bottom: -1.8em
+  bottom: -1.8em;
 }
 
 .command .switch-led-green {
   top: -5em;
   border-top: 0.1em solid rgba(0, 161, 75, 0.5);
-  border-bottom: 0.1em solid rgba(255, 255, 255, 0.25)
+  border-bottom: 0.1em solid rgba(255, 255, 255, 0.25);
 }
 
 .command .switch-led-green .switch-led-light {
   background: #00a14b;
-  border: 0.1em solid #006838
+  border: 0.1em solid #006838;
 }
 
 .command .switch-led-red {
@@ -1368,68 +1384,68 @@ button.activated {
   border-bottom: 0.1em solid rgba(255, 255, 255, 0.25);
   -webkit-box-shadow: 0 0 3em #ed1c24;
   -moz-box-shadow: 0 0 3em #ed1c24;
-  box-shadow: 0 0 3em #ed1c24
+  box-shadow: 0 0 3em #ed1c24;
 }
 
 .command .switch-led-red .switch-led-light {
   background: #ed1c24;
-  border: 0.1em solid #a11e2d
+  border: 0.1em solid #a11e2d;
 }
 
 .command .switch-led-red .switch-led-glow {
   background: #fff;
   background: rgba(255, 255, 255, 0.3);
-  filter: alpha(opacity=30)
+  filter: alpha(opacity=30);
 }
 
 .command .switch input:checked ~ .switch-handle-left,
 .command .switch input:checked ~ .switch-handle-right {
   top: 1.5em;
   border-bottom: 0;
-  border-top: 4.5em solid #111
+  border-top: 4.5em solid #111;
 }
 
 .command .switch input:checked ~ .switch-handle {
-  top: 1.5em
+  top: 1.5em;
 }
 
 .command .switch input:checked ~ .switch-handle-top {
   top: -1em;
   border-top: 0;
-  border-bottom: 0.2em solid #AEB2B3
+  border-bottom: 0.2em solid #AEB2B3;
 }
 
 .command .switch input:checked ~ .switch-handle-bottom {
   top: 4.2em;
   border-top: 0;
-  border-bottom: 0.2em solid #141414
+  border-bottom: 0.2em solid #141414;
 }
 
 .command .switch input:checked ~ .switch-handle-base {
   top: 4.5em;
   border-top: 0;
-  border-bottom: 0.2em solid rgba(255, 255, 255, 0.35)
+  border-bottom: 0.2em solid rgba(255, 255, 255, 0.35);
 }
 
 .command .switch input:checked ~ .switch-led-green {
   -webkit-box-shadow: 0 0 3em #00a14b;
   -moz-box-shadow: 0 0 3em #00a14b;
-  box-shadow: 0 0 3em #00a14b
+  box-shadow: 0 0 3em #00a14b;
 }
 
 .command .switch input:checked ~ .switch-led-green .switch-led-glow {
   background: #fff;
   background: rgba(255, 255, 255, 0.4);
-  filter: alpha(opacity=40)
+  filter: alpha(opacity=40);
 }
 
 .command .switch input:checked ~ .switch-led-red {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
-  box-shadow: none
+  box-shadow: none;
 }
 
 .command .switch input:checked ~ .switch-led-red .switch-led-glow {
   background: rgba(255, 255, 255, 0);
-  filter: alpha(opacity=0)
+  filter: alpha(opacity=0);
 }
