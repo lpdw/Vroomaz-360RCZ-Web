@@ -23,7 +23,7 @@ button.depth {
 }
 
 button:hover,
-button button.activable:focus {
+button:focus {
   color: #0ab;
   text-shadow: 0 0 20px rgba(143, 143, 239, 0.5), 0 1px 1px rgba(255, 255, 255, 0.25), 0 -1px 1px rgba(0, 0, 0, 0.75)
 }
@@ -96,8 +96,9 @@ button:disabled {
   min-height: 600px;
   margin: auto;
   margin-right: 40px;
-  position: absolute;
-  right: 0
+  position: relative;
+  float: right;
+  display: none
 }
 
 .commands {
@@ -109,6 +110,21 @@ button:disabled {
 .pad-container {
   position: absolute;
   left: 100px
+}
+
+.partial-switch {
+  position: absolute;
+  top: 350px;
+  left: 50px;
+  width: 500px;
+  height: 500px;
+  margin-left: 20px
+}
+
+.partial-switch .switchMode-label {
+  font-family: 'Share';
+  margin: 0 0 0 -70px;
+  display: inline
 }
 
 .roue {
@@ -537,8 +553,9 @@ hr {
   min-height: 600px;
   margin: auto;
   margin-right: 40px;
-  position: absolute;
-  right: 0
+  position: relative;
+  float: right;
+  display: none
 }
 
 .commands {
@@ -550,6 +567,21 @@ hr {
 .pad-container {
   position: absolute;
   left: 100px
+}
+
+.partial-switch {
+  position: absolute;
+  top: 350px;
+  left: 50px;
+  width: 500px;
+  height: 500px;
+  margin-left: 20px
+}
+
+.partial-switch .switchMode-label {
+  font-family: 'Share';
+  margin: 0 0 0 -70px;
+  display: inline
 }
 
 .roue {
@@ -614,23 +646,7 @@ hr {
 }
 
 .command .switch-container {
-  display: inline-block;
-  width: 100px
-}
-
-.command .partial-switch {
-  position: absolute;
-  top: 350px;
-  left: 80px;
-  width: 500px;
-  height: 500px;
-  margin-left: 20px
-}
-
-.command .partial-switch .switchMode-label {
-  font-family: 'Share';
-  margin: 0 0 0 -15px;
-  text-align: center
+  display: inline
 }
 
 .command .switch {
@@ -915,12 +931,31 @@ hr {
 }
 
 .command .switch-led-green:after {
-  top: -1.8em;
-  content: 'ON'
+  top: -1.8em
 }
 
 .command .switch-led-red:after {
-  bottom: -1.8em;
+  bottom: -1.8em
+}
+
+.command .switch1 .switch-led-green:after {
+  content: 'AUTO'
+}
+
+.command .switch1 .switch-led-red:after {
+  content: 'MANUAL';
+  left: -1em
+}
+
+.command .switch2 .switch-led-green:after,
+.command .switch3 .switch-led-green:after,
+.command .switch4 .switch-led-green:after {
+  content: 'ON'
+}
+
+.command .switch2 .switch-led-red:after,
+.command .switch3 .switch-led-red:after,
+.command .switch4 .switch-led-red:after {
   content: 'OFF'
 }
 
@@ -1032,7 +1067,7 @@ button.depth {
 }
 
 button:hover,
-button button.activable:focus {
+button:focus {
   color: #0ab;
   text-shadow: 0 0 20px rgba(143, 143, 239, 0.5), 0 1px 1px rgba(255, 255, 255, 0.25), 0 -1px 1px rgba(0, 0, 0, 0.75)
 }
@@ -1105,23 +1140,7 @@ button:disabled {
 }
 
 .command .switch-container {
-  display: inline-block;
-  width: 100px
-}
-
-.command .partial-switch {
-  position: absolute;
-  top: 350px;
-  left: 80px;
-  width: 500px;
-  height: 500px;
-  margin-left: 20px
-}
-
-.command .partial-switch .switchMode-label {
-  font-family: 'Share';
-  margin: 0 0 0 -15px;
-  text-align: center
+  display: inline
 }
 
 .command .switch {
@@ -1406,12 +1425,31 @@ button:disabled {
 }
 
 .command .switch-led-green:after {
-  top: -1.8em;
-  content: 'ON'
+  top: -1.8em
 }
 
 .command .switch-led-red:after {
-  bottom: -1.8em;
+  bottom: -1.8em
+}
+
+.command .switch1 .switch-led-green:after {
+  content: 'AUTO'
+}
+
+.command .switch1 .switch-led-red:after {
+  content: 'MANUAL';
+  left: -1em
+}
+
+.command .switch2 .switch-led-green:after,
+.command .switch3 .switch-led-green:after,
+.command .switch4 .switch-led-green:after {
+  content: 'ON'
+}
+
+.command .switch2 .switch-led-red:after,
+.command .switch3 .switch-led-red:after,
+.command .switch4 .switch-led-red:after {
   content: 'OFF'
 }
 

@@ -3,18 +3,12 @@
   <% include partials/header %>
   <section class="content">
     <div class="commands">
-      <% include partials/switchMode %>
+      <% include partials/switch %>
       <% include partials/buttonPad %>
     </div>
     <div class ="car">
-      <div id="avd" class="roue av-d"></div>
-      <div id="avg" class="roue av-g"></div>
-      <div id="ard" class="roue ar-d"></div>
-      <div id="ard" class="roue ar-g"></div>
-      <div id="avaxe" class="axe"></div>
-      <div id="araxe" class="axe"></div>
+      <% include partials/car %>
     </div>
-
     <div id="state"></div>
     <div id="gamepadDisplay"></div>
   </section>

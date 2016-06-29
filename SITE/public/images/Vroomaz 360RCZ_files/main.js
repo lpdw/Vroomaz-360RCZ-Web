@@ -1,38 +1,20 @@
-var lastEvent;
-var lastController;
-var modeSelected;
-
-var reset = function(){
-  console.log("reset");
-}
-
 //Ajax calls
+
+var lastEvent; //var used for key detection
+
 var controlServer = "http://localhost:3001";
 
 //Moving forward
 function start() {
-  var req = "";
-  if($('#switch1').is(':checked')) {
-    req = "/mode/auto";
-  } else if($('#switch2').is(':checked')) {
-    req = "/mode/line";
-  } else if($('#switch3').is(':checked')) {
-    req = "/start";
-  }
-  if (req != "") {
-    $.ajax({
-      url: controlServer + req,
-      method: "POST"
-    })
-    .done(function (msg) {
-      console.log(msg);
-      $("#forward-button").addClass("activated");
-      $("#stop-button").removeClass("activated");
-    });
-  } else {
-    alert("Please chose a mode with the switch buttons")
-  }
-
+  $.ajax({
+    url: controlServer + "/start",
+    method: "POST"
+  })
+  .done(function (msg) {
+    console.log(msg);
+    $("#forward-button").addClass("activated");
+    $("#stop-button").removeClass("activated");
+  });
 }
 
 
@@ -105,6 +87,7 @@ function right() {
 
 //Html buttons support
 var pressedButon = false;
+var switchCommand = $('#switch2').is(':checked');
 
 var disableButtons = function() {
   $("#backward-button").prop('disabled', true);
@@ -122,45 +105,54 @@ var enableButtons = function()  {
   $("#stop-button").addClass('activated');
 }
 
-$("#forward-button").mousedown(function(){
-  lastController = "b";
-  start();
-  $("#forward-button").removeClass("activable");
-  $("#forward-button").on('mouseup', function(){
-    $("#forward-button").addClass("activable");
-    stop();
-  })
+$("#forward-button").click(function(){
+  if(pressedButon && !switchCommand){
+    stop(start);
+  } else if(!switchCommand){
+    start();
+  }
+  pressedButon = true;
 });
 
-$("#backward-button").mousedown(function(){
-  lastController = "b";
-  back();
-  $("#backward-button").removeClass("activable");
+$("#backward-button").click(function(){
+  if(pressedButon){
+    stop(back);
+  } else {
+    back();
+  }
+  pressedButon = true;
 });
 
-$("#right-button").mousedown(function(){
-  lastController = "b";
-  right();
-  $("#right-button").removeClass("activable");
+$("#left-button").click(function(){
+  if(pressedButon){
+    stop(left);
+  } else {
+    left();
+  }
+  pressedButon = true;
 });
 
-$("#left-button").mousedown(function(){
-  lastController = "b";
-  left();
-  $("#right-button").removeClass("activable");
+$("#right-button").click(function(){
+  if(pressedButon){
+    stop(right);
+  } else {
+    right();
+  }
+  pressedButon = true;
 });
 
-$("#stop-button").mousedown(function(){
-  lastController = "b";
+$("#stop-button").click(function(){
   stop();
-  $("#stop-button").removeClass("activable");
+  pressedButon = true;
 });
 
-// $(".depth").mouseup(function(){
-//   console.log("up");
-//   $(".depth").addClass("activable");
-//   stop();
-// });
+$('#switch1').change(function(){
+  if(this.checked) {
+    disableButtons();
+  } else {
+    enableButtons();
+  }
+});
 
 //Gamepad support
 
@@ -212,28 +204,24 @@ function reportOnGamepad() {
           console.log('left');
           left();
           lastEventGP = i;
-          lastController = "gp";
           break;
 
         case "UP": // forward
           console.log('forward');
           start();
           lastEventGP = i;
-          lastController = "gp";
           break;
 
         case "LEFT": // right
           console.log('right');
           right();
           lastEventGP = i;
-          lastController = "gp";
           break;
 
         case "DOWN": // backward
           console.log('backward');
           back();
           lastEventGP = i;
-          lastController = "gp";
           break;
 
         default:
@@ -248,7 +236,6 @@ function reportOnGamepad() {
             console.log('stop left');
             stop();
             lastEventGP = null;
-            lastController = "gp";
           }
           break;
 
@@ -257,7 +244,6 @@ function reportOnGamepad() {
             console.log('stop up');
             stop();
             lastEventGP = null;
-            lastController = "gp";
           }
           break;
 
@@ -266,7 +252,6 @@ function reportOnGamepad() {
             console.log('stop right');
             stop();
             lastEventGP = null;
-            lastController = "gp";
           }
           break;
 
@@ -275,7 +260,6 @@ function reportOnGamepad() {
             console.log('stop down');
             stop();
             lastEventGP = null;
-            lastController = "gp";
           }
           break;
 
@@ -334,44 +318,38 @@ $(document).ready(function() {
 //Keyboard support
 
 $(document).keydown(function(e) {
-  if($('body').is('.command')){
+  if($('body').is('.command') && $('#switch2').is(':checked')){
     if (lastEvent) return;
-    if(lastController && lastController != "kb") reset();
 
     switch(e.which) {
       case 32: // stop
         console.log('stop');
         stop();
-        lastEvent = e;
-        lastController = "kb";
+        lastEvent = e  ;
         break;
 
       case 37: // left
         console.log('left');
         left();
         lastEvent = e;
-        lastController = "kb";
         break;
 
       case 38: // forward
         console.log('forward');
         start();
         lastEvent = e;
-        lastController = "kb";
         break;
 
       case 39: // right
         console.log('right');
         right();
         lastEvent = e;
-        lastController = "kb";
         break;
 
       case 40: // backward
         console.log('backward');
         back();
         lastEvent = e;
-        lastController = "kb";
         break;
 
       default: return; // exit this handler for other keys
@@ -381,57 +359,35 @@ $(document).keydown(function(e) {
 });
 
 $(document).keyup(function(e) {
-  if($('body').is('.command')){
+  if($('body').is('.command') && $('#switch2').is(':checked')){
     if (lastEvent && lastEvent.keyCode != e.keyCode) return;
     switch(e.which) {
       case 37: // left
         console.log('stop left');
         stop();
         lastEvent = null;
-        lastController = "kb";
         break;
 
       case 38: // up
         console.log('stop up');
         stop();
         lastEvent = null;
-        lastController = "kb";
         break;
 
       case 39: // right
         console.log('stop right');
         stop();
         lastEvent = null;
-        lastController = "kb";
         break;
 
       case 40: // down
         console.log('stop down');
         stop();
         lastEvent = null;
-        lastController = "kb";
         break;
 
       default: return; // exit this handler for other keys
     }
     e.preventDefault(); // prevent the default action (scroll / move caret)
   }
-});
-
-$('#switch1').change(function(){
-  disableButtons();
-  $('#switch2').prop('checked', false);
-  $('#switch3').prop('checked', false);
-});
-
-$('#switch2').change(function(){
-  disableButtons();
-  $('#switch1').prop('checked', false);
-  $('#switch3').prop('checked', false);
-});
-
-$('#switch3').change(function(){
-  enableButtons();
-  $('#switch1').prop('checked', false);
-  $('#switch2').prop('checked', false);
 });

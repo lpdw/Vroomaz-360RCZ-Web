@@ -1,19 +1,30 @@
 //Ajax calls
-
-var lastEvent; //var used for key detection
-
 var controlServer = "http://localhost:3001";
 
 //Moving forward
 function start() {
-  $.ajax({
-    url: controlServer + "/start",
-    method: "POST"
-  })
-  .done(function (msg) {
-    console.log(msg);
-    $("#forward-button").addClass("activated");
-  });
+  var req = "";
+  if($('#switch1').is(':checked')) {
+    req = "/mode/auto";
+  } else if($('#switch2').is(':checked')) {
+    req = "/mode/line";
+  } else if($('#switch3').is(':checked')) {
+    req = "/start";
+  }
+  if (req != "") {
+    $.ajax({
+      url: controlServer + req,
+      method: "POST"
+    })
+    .done(function (msg) {
+      console.log(msg);
+      $("#forward-button").addClass("activated");
+      $("#stop-button").removeClass("activated");
+    });
+  } else {
+    alert("Please chose a mode with the switch buttons")
+  }
+
 }
 
 
@@ -26,6 +37,7 @@ function back() {
   .done(function (msg) {
     console.log(msg);
     $("#backward-button").addClass("activated");
+    $("#stop-button").removeClass("activated");
   });
 }
 
@@ -38,6 +50,7 @@ function stop(callback) {
   })
   .done(function (msg) {
     console.log(msg);
+    $("#stop-button").addClass("activated");
     $("#left-button").removeClass("activated");
     $("#right-button").removeClass("activated");
     $("#backward-button").removeClass("activated");
@@ -62,6 +75,7 @@ function left() {
     $("#avg").addClass("turn-left");
     $("#avd").addClass("turn-left");
     $("#left-button").addClass("activated");
+    $("#stop-button").removeClass("activated");
   });
 }
 
@@ -77,5 +91,6 @@ function right() {
     $("#avg").addClass("turn-right");
     $("#avd").addClass("turn-right");
     $("#right-button").addClass("activated");
+    $("#stop-button").removeClass("activated");
   });
 }

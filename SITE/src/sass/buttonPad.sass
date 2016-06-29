@@ -19,7 +19,7 @@ button
     text-shadow: 0 1px 1px hsla(0, 0%, 100%, 0.25), 0 -1px 1px hsla(0, 0%, 0%, 0.75)
     width: 80px
 
-  &:hover, &:focus
+  &:hover, button.activable:focus
     color: #0ab
     text-shadow: 0 0 20px hsla(240, 75%, 75%, 0.5), 0 1px 1px hsla(0, 0%, 100%, 0.25), 0 -1px 1px hsla(0, 0%, 0%, 0.75)
 
@@ -36,10 +36,10 @@ button.activated
 
 button[disabled=disabled], button:disabled
     color: red
-    
+
 /* 3D Button
 
-.pad
+.partial-pad
   margin: 50px 0 0 0
   position: relative
   width: 300px

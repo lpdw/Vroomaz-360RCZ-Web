@@ -1,4 +1,21 @@
 .command
+  .switch-container
+    display: inline-block
+    width: 100px
+
+  .partial-switch
+    position: absolute
+    top: 350px
+    left: 80px
+    width: 500px
+    height: 500px
+    margin-left: 20px
+    .switchMode-label
+      font-family: 'Share'
+      margin: 0 0 0 -15px
+      text-align: center
+      //display: inline
+
   .switch
     display: inline-block
     margin: 10em 2em
@@ -254,12 +271,12 @@
     text-shadow: 0 0.1em rgba(0, 0, 0, 0.7)
 
   .switch-led-green:after
-    content: 'ON'
     top: -1.8em
+    content: 'ON'
 
   .switch-led-red:after
-    content: 'OFF'
     bottom: -1.8em
+    content: 'OFF'
 
   .switch-led-green
     top: -5em

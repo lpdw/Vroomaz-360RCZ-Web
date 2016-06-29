@@ -48,24 +48,28 @@ function reportOnGamepad() {
           console.log('left');
           left();
           lastEventGP = i;
+          lastController = "gp";
           break;
 
         case "UP": // forward
           console.log('forward');
           start();
           lastEventGP = i;
+          lastController = "gp";
           break;
 
         case "LEFT": // right
           console.log('right');
           right();
           lastEventGP = i;
+          lastController = "gp";
           break;
 
         case "DOWN": // backward
           console.log('backward');
           back();
           lastEventGP = i;
+          lastController = "gp";
           break;
 
         default:
@@ -80,6 +84,7 @@ function reportOnGamepad() {
             console.log('stop left');
             stop();
             lastEventGP = null;
+            lastController = "gp";
           }
           break;
 
@@ -88,6 +93,7 @@ function reportOnGamepad() {
             console.log('stop up');
             stop();
             lastEventGP = null;
+            lastController = "gp";
           }
           break;
 
@@ -96,6 +102,7 @@ function reportOnGamepad() {
             console.log('stop right');
             stop();
             lastEventGP = null;
+            lastController = "gp";
           }
           break;
 
@@ -104,6 +111,7 @@ function reportOnGamepad() {
             console.log('stop down');
             stop();
             lastEventGP = null;
+            lastController = "gp";
           }
           break;
 

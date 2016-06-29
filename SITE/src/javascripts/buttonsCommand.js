@@ -2,64 +2,57 @@
 var pressedButon = false;
 
 var disableButtons = function() {
-  $("#forward-button").prop('disabled', true);
   $("#backward-button").prop('disabled', true);
   $("#left-button").prop('disabled', true);
   $("#right-button").prop('disabled', true);
+  stop();
+  $("#stop-button").addClass('activated');
 }
 
 var enableButtons = function()  {
-  $("#forward-button").prop('disabled', false);
   $("#backward-button").prop('disabled', false);
   $("#left-button").prop('disabled', false);
   $("#right-button").prop('disabled', false);
+  stop();
+  $("#stop-button").addClass('activated');
 }
 
-$("#forward-button").click(function(){
-  if(pressedButon){
-    stop(start);
-  } else {
-    start();
-  }
-  pressedButon = true;
+$("#forward-button").mousedown(function(){
+  lastController = "b";
+  start();
+  $("#forward-button").removeClass("activable");
+  $("#forward-button").on('mouseup', function(){
+    $("#forward-button").addClass("activable");
+    stop();
+  })
 });
 
-$("#backward-button").click(function(){
-  if(pressedButon){
-    stop(back);
-  } else {
-    back();
-  }
-  pressedButon = true;
+$("#backward-button").mousedown(function(){
+  lastController = "b";
+  back();
+  $("#backward-button").removeClass("activable");
 });
 
-$("#left-button").click(function(){
-  if(pressedButon){
-    stop(left);
-  } else {
-    left();
-  }
-  pressedButon = true;
+$("#right-button").mousedown(function(){
+  lastController = "b";
+  right();
+  $("#right-button").removeClass("activable");
 });
 
-$("#right-button").click(function(){
-  if(pressedButon){
-    stop(right);
-  } else {
-    right();
-  }
-  pressedButon = true;
+$("#left-button").mousedown(function(){
+  lastController = "b";
+  left();
+  $("#right-button").removeClass("activable");
 });
 
-$("#stop-button").click(function(){
+$("#stop-button").mousedown(function(){
+  lastController = "b";
   stop();
-  pressedButon = true;
+  $("#stop-button").removeClass("activable");
 });
 
-$('#switch1').change(function(){
-  if(this.checked) {
-    disableButtons();
-  } else {
-    enableButtons();
-  }
-});
+// $(".depth").mouseup(function(){
+//   console.log("up");
+//   $(".depth").addClass("activable");
+//   stop();
+// });
