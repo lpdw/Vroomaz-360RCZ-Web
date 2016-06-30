@@ -2,14 +2,39 @@
 <body class="command">
   <% include partials/header %>
   <section class="content clearfix">
-    <div class="commands">
-      <% include partials/switch %>
-      <% include partials/buttonPad %>
+    <div class="commands-container">
+      <div class="commands">
+        <% include partials/switch %>
+        <% include partials/buttonPad %>
+      </div>
+      <p>
+        <ul class="howTo">
+          <li>
+            <h4>Manual Mode</h4>
+            <img id="arrowKeys" src="images/arrow-keys.png"/>
+            <img id="gamepad" src="images/gamepad.png"/><br/>
+            <div id="state"></div>
+            You can control the car with the arrow and spacebar keys of your keyboard,
+            with a Xbox 360 gamepad controller (on Windows and Mac El Capitan), or with the below cons buttons.
+          </li>
+          <li>
+            <h4>Auto Mode</h4>
+            The car will move itself, avoiding the obstacles.
+            Press forward command to start, and stop command to stop the car.
+          </li>
+          <li>
+            <h4>Line Mode</h4>
+            The car will follow the line.
+            Press forward command to start, and stop command to stop the car.
+          </li>
+        </ul>
+      </p>
+      <div class ="car">
+        <% include partials/car %>
+        <span id="carDirection"></span>
+      </div>
+      <div id="state"></div>
+      <div id="gamepadDisplay"></div>
     </div>
-    <div class ="car">
-      <% include partials/car %>
-    </div>
-    <div id="state"></div>
-    <div id="gamepadDisplay"></div>
   </section>
   <% include partials/footer %>

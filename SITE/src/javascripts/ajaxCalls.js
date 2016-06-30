@@ -1,5 +1,5 @@
 //Ajax calls
-var controlServer = "http://192.168.1.239";
+var controlServer = "http://localhost:3001";
 
 //Moving forward
 function start() {
@@ -20,6 +20,8 @@ function start() {
       console.log(msg);
       $("#forward-button").addClass("activated");
       $("#stop-button").removeClass("activated");
+      $('#carDirection').html('<i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i>');
+      if(stopFlag) stop();
     });
   } else {
     alert("Please chose a mode with the switch buttons")
@@ -29,15 +31,18 @@ function start() {
 
 
 //Moving backward
-function back() {
+function back(e) {
   $.ajax({
     url: controlServer + "/back",
     method: "POST"
   })
   .done(function (msg) {
     console.log(msg);
+    lastEvent = e;
     $("#backward-button").addClass("activated");
     $("#stop-button").removeClass("activated");
+    $('#carDirection').html('<i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i>');
+    if(stopFlag) stop();
   });
 }
 
@@ -50,6 +55,7 @@ function stop(callback) {
   })
   .done(function (msg) {
     console.log(msg);
+    $('#carDirection').html('');
     $("#stop-button").addClass("activated");
     $("#left-button").removeClass("activated");
     $("#right-button").removeClass("activated");
@@ -76,6 +82,8 @@ function left() {
     $("#avd").addClass("turn-left");
     $("#left-button").addClass("activated");
     $("#stop-button").removeClass("activated");
+    $('#carDirection').html('<i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>');
+    if(stopFlag) stop();
   });
 }
 
@@ -92,5 +100,7 @@ function right() {
     $("#avd").addClass("turn-right");
     $("#right-button").addClass("activated");
     $("#stop-button").removeClass("activated");
+    $('#carDirection').html('<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>');
+    if(stopFlag) stop();
   });
 }

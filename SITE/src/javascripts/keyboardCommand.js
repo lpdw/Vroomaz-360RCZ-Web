@@ -15,29 +15,29 @@ $(document).keydown(function(e) {
 
       case 37: // left
         console.log('left');
-        left();
-        lastEvent = e;
+        left(e);
+        //lastEvent = e;
         lastController = "kb";
         break;
 
       case 38: // forward
         console.log('forward');
-        start();
-        lastEvent = e;
+        start(e);
+        //lastEvent = e;
         lastController = "kb";
         break;
 
       case 39: // right
         console.log('right');
-        right();
-        lastEvent = e;
+        right(e);
+        //lastEvent = e;
         lastController = "kb";
         break;
 
       case 40: // backward
         console.log('backward');
-        back();
-        lastEvent = e;
+        back(e);
+        //lastEvent = e;
         lastController = "kb";
         break;
 
@@ -48,39 +48,65 @@ $(document).keydown(function(e) {
 });
 
 $(document).keyup(function(e) {
-  if($('body').is('.command')){
-    if (lastEvent && lastEvent.keyCode != e.keyCode) return;
-    switch(e.which) {
-      case 37: // left
-        console.log('stop left');
-        stop();
-        lastEvent = null;
-        lastController = "kb";
-        break;
+  var inter = setInterval(function () {
+    if($('body').is('.command')){
+      if (lastEvent && lastEvent.keyCode != e.keyCode) return;
+      switch(e.which) {
+        case 37: // left
+          if(!lastEvent){
+            stopFlag = true;
+            break;
+          }
+          console.log('stop left');
+          stop();
+          lastEvent = null;
+          lastController = "kb";
+          clearInterval(inter);
+          inter = 0;
+          break;
 
-      case 38: // up
-        console.log('stop up');
-        stop();
-        lastEvent = null;
-        lastController = "kb";
-        break;
+        case 38: // up
+          if(!lastEvent){
+            stopFlag = true;
+            break;
+          }
+          console.log('stop up');
+          stop();
+          lastEvent = null;
+          lastController = "kb";
+          clearInterval(inter);
+          inter = 0;
+          break;
 
-      case 39: // right
-        console.log('stop right');
-        stop();
-        lastEvent = null;
-        lastController = "kb";
-        break;
+        case 39: // right
+          if(!lastEvent){
+            stopFlag = true;
+            break;
+          }
+          console.log('stop right');
+          stop();
+          lastEvent = null;
+          lastController = "kb";
+          clearInterval(inter);
+          inter = 0;
+          break;
 
-      case 40: // down
-        console.log('stop down');
-        stop();
-        lastEvent = null;
-        lastController = "kb";
-        break;
+        case 40: // down
+          if(!lastEvent){
+            stopFlag = true;
+            break;
+          }
+          console.log('stop down');
+          stop();
+          lastEvent = null;
+          lastController = "kb";
+          clearInterval(inter);
+          inter = 0;
+          break;
 
-      default: return; // exit this handler for other keys
+        default: return; // exit this handler for other keys
+      }
+      e.preventDefault(); // prevent the default action (scroll / move caret)
     }
-    e.preventDefault(); // prevent the default action (scroll / move caret)
-  }
+  }, 0);
 });

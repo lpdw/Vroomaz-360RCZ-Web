@@ -1,63 +1,150 @@
-.car
-  min-width: 400px
-  min-height: 600px
-  margin: auto
-  margin-right: 40px
-  position: absolute
-  right: 0
-
-.commands
-  min-width: 300px
-  float: left
+.command-container
   position: relative
 
-.pad-container
-  position: absolute
-  left: 100px
+.command
+  .content
+    min-width: 800px
+    margin-left: 100px
+    margin-right: 100px
+  .commands
+    min-width: 300px
+  .partial-pad
+    float: left
+    margin: 50px 0 0 50px
 
-.roue
-  width: 100px
-  height: 200px
-  background-color: rgb(0, 0, 0)
-  border: 1px solid red
-  position: absolute
-  border-radius: 25%
-  background: linear-gradient(225deg, black 22px, rgb(40, 40, 40) 22px, rgb(40, 40, 40) 24px, transparent 24px, transparent 67px, rgb(40, 40, 40) 67px, rgb(40, 40, 40) 69px, transparent 69px), linear-gradient(135deg, black 22px, rgb(40, 40, 40) 22px, rgb(40, 40, 40) 24px, transparent 24px, transparent 67px, rgb(40, 40, 40) 67px, rgb(40, 40, 40) 69px, transparent 69px)0 64px
-  background-color: black
-  background-size: 64px 128px
+  .partial-switch
+    position: absolute
+    top: 475px
+    left: 135px
+    width: 500px
+    margin-left: 20px
+    .switchMode-label
+      font-family: 'Share'
+      margin: 0 0 0 -15px
+      text-align: center
 
-.axe
-  width: 300px
-  height: 10px
-  background-color: rgb(0, 0, 0)
-  position: absolute
+  .howTo
+    background-color: rgb(201, 194, 194)
+    border-radius: 10px
+    font-family: 'Share'
+    width: 250px
+    height: auto
+    float: left
+    margin: 100px 0 0 100px
+    list-style: none
+    padding: 10px 20px 20px 20px
+    h4
+      padding: 10px
+      margin: 5px 0 10px 0
+      text-decoration: underline
+    #arrowKeys
+      width: 75px
+      margin: 0 0 0 25px
+    #gamepad
+      width: 75px
+      transform: translateY(-20%)
+      margin: 0 0 0 40px
+    #state
+      margin-left: 135px
 
-#avaxe
-  top: 115px
-  left: 40px
+  //The car
 
-#araxe
-  top: 490px
-  left: 40px
+  @media screen and (min-width: 1600px)
+    .car
+      min-width: 400px
+      min-height: 600px
+      margin-right: 40px
+      position: absolute
+      right: 10vw
+      top: 150px
+    #carDirection
+      font-size: 15em
 
-.av-d
-  top: 20px
-  right: 0
+  @media screen and (max-width: 1599px)
+    .car
+      min-width: 300px
+      min-height: 500px
+      margin-right: 40px
+      position: absolute
+      right: 10vw
+      top: 220px
+    #carDirection
+      font-size: 12em
 
-.av-g
-  top: 20px
-  left: 0
+  @media screen and (max-width: 1399px)
+    .car
+      right: 5vw
 
-.ar-d
-  bottom: 0
-  right: 0
+  @media screen and (max-width: 1299px)
+    .car
+      right: 5vw
+    .content
+      margin-left: 0
+      margin-right: 50px
+    .partial-switch
+      left: 35px
 
-.ar-g
-  bottom: 0
-  left: 0
+  @media screen and (max-width: 1199px)
+    .car
+      min-width: 200px
+      min-height: 400px
+      right: 0
+      top: 280px
+    #carDirection
+      font-size: 9em
 
-.turn-left
-  transform: rotate(-20deg)
+  @media screen and (max-width: 999px)
+    .car
+      display: none
 
-.turn-right
-  transform: rotate(20deg)
+  .roue
+    width: 25%
+    height: 35%
+    background-color: rgb(0, 0, 0)
+    border: 1px solid red
+    position: absolute
+    border-radius: 25%
+    background: linear-gradient(225deg, black 22px, rgb(40, 40, 40) 22px, rgb(40, 40, 40) 24px, transparent 24px, transparent 67px, rgb(40, 40, 40) 67px, rgb(40, 40, 40) 69px, transparent 69px), linear-gradient(135deg, black 22px, rgb(40, 40, 40) 22px, rgb(40, 40, 40) 24px, transparent 24px, transparent 67px, rgb(40, 40, 40) 67px, rgb(40, 40, 40) 69px, transparent 69px)0 64px;
+    background-color: black
+    background-size: 64px 128px
+
+  .axe
+    width: 100%
+    height: 2%
+    background-color: rgb(0, 0, 0)
+    position: absolute
+
+  #avaxe
+    top: 20%
+
+  #araxe
+    top: 81%
+    left: 0px
+
+  #carDirection
+    position: absolute
+    top: 53%
+    left: 50%
+    transform: translate3d(-50%,-50%,0)
+
+  .av-d
+    top: 20px
+    right: 0
+
+  .av-g
+    top: 20px
+    left: 0
+
+  .ar-d
+    bottom: 0
+    right: 0
+
+  .ar-g
+    bottom: 0
+    left: 0
+
+  .turn-left
+    transform: rotate(-20deg)
+
+  .turn-right
+    transform: rotate(20deg)

@@ -31,28 +31,38 @@ $("#backward-button").mousedown(function(){
   lastController = "b";
   back();
   $("#backward-button").removeClass("activable");
+  $("#backward-button").on('mouseup', function(){
+    $("#backward-button").addClass("activable");
+    stop();
+  })
 });
 
 $("#right-button").mousedown(function(){
   lastController = "b";
   right();
   $("#right-button").removeClass("activable");
+  $("#right-button").on('mouseup', function(){
+    $("#right-button").addClass("activable");
+    stop();
+  })
 });
 
 $("#left-button").mousedown(function(){
   lastController = "b";
   left();
-  $("#right-button").removeClass("activable");
+  $("#left-button").removeClass("activable");
+  $("#left-button").on('mouseup', function(){
+    $("#left-button").addClass("activable");
+    stop();
+  })
 });
 
 $("#stop-button").mousedown(function(){
   lastController = "b";
   stop();
   $("#stop-button").removeClass("activable");
+  $("#stop-button").on('mouseup', function(){
+    $("#stop-button").addClass("activable");
+    stop();
+  })
 });
-
-// $(".depth").mouseup(function(){
-//   console.log("up");
-//   $(".depth").addClass("activable");
-//   stop();
-// });

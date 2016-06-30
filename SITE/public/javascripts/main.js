@@ -1,13 +1,14 @@
 var lastEvent;
 var lastController;
 var modeSelected;
+var stopFlag;
 
 var reset = function(){
   console.log("reset");
 }
 
 //Ajax calls
-var controlServer = "http://192.168.1.239";
+var controlServer = "http://localhost:3001";
 
 //Moving forward
 function start() {
@@ -28,6 +29,8 @@ function start() {
       console.log(msg);
       $("#forward-button").addClass("activated");
       $("#stop-button").removeClass("activated");
+      $('#carDirection').html('<i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i>');
+      if(stopFlag) stop();
     });
   } else {
     alert("Please chose a mode with the switch buttons")
@@ -37,15 +40,18 @@ function start() {
 
 
 //Moving backward
-function back() {
+function back(e) {
   $.ajax({
     url: controlServer + "/back",
     method: "POST"
   })
   .done(function (msg) {
     console.log(msg);
+    lastEvent = e;
     $("#backward-button").addClass("activated");
     $("#stop-button").removeClass("activated");
+    $('#carDirection').html('<i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i>');
+    if(stopFlag) stop();
   });
 }
 
@@ -58,6 +64,7 @@ function stop(callback) {
   })
   .done(function (msg) {
     console.log(msg);
+    $('#carDirection').html('');
     $("#stop-button").addClass("activated");
     $("#left-button").removeClass("activated");
     $("#right-button").removeClass("activated");
@@ -84,6 +91,8 @@ function left() {
     $("#avd").addClass("turn-left");
     $("#left-button").addClass("activated");
     $("#stop-button").removeClass("activated");
+    $('#carDirection').html('<i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>');
+    if(stopFlag) stop();
   });
 }
 
@@ -100,6 +109,8 @@ function right() {
     $("#avd").addClass("turn-right");
     $("#right-button").addClass("activated");
     $("#stop-button").removeClass("activated");
+    $('#carDirection').html('<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>');
+    if(stopFlag) stop();
   });
 }
 
@@ -136,31 +147,41 @@ $("#backward-button").mousedown(function(){
   lastController = "b";
   back();
   $("#backward-button").removeClass("activable");
+  $("#backward-button").on('mouseup', function(){
+    $("#backward-button").addClass("activable");
+    stop();
+  })
 });
 
 $("#right-button").mousedown(function(){
   lastController = "b";
   right();
   $("#right-button").removeClass("activable");
+  $("#right-button").on('mouseup', function(){
+    $("#right-button").addClass("activable");
+    stop();
+  })
 });
 
 $("#left-button").mousedown(function(){
   lastController = "b";
   left();
-  $("#right-button").removeClass("activable");
+  $("#left-button").removeClass("activable");
+  $("#left-button").on('mouseup', function(){
+    $("#left-button").addClass("activable");
+    stop();
+  })
 });
 
 $("#stop-button").mousedown(function(){
   lastController = "b";
   stop();
   $("#stop-button").removeClass("activable");
+  $("#stop-button").on('mouseup', function(){
+    $("#stop-button").addClass("activable");
+    stop();
+  })
 });
-
-// $(".depth").mouseup(function(){
-//   console.log("up");
-//   $(".depth").addClass("activable");
-//   stop();
-// });
 
 //Gamepad support
 
@@ -339,6 +360,51 @@ $(document).ready(function() {
 
 });
 
+$(document).ready(function ($) {
+
+    setInterval(function () {
+        moveRight();
+    }, 3000);
+
+	var slideCount = $('#slider ul li').length;
+	var slideWidth = $('#slider ul li').width();
+	var slideHeight = $('#slider ul li').height();
+	var sliderUlWidth = slideCount * slideWidth;
+
+	$('#slider').css({ width: slideWidth, height: slideHeight });
+
+	$('#slider ul').css({ width: sliderUlWidth, marginLeft: - slideWidth });
+
+    $('#slider ul li:last-child').prependTo('#slider ul');
+
+    function moveLeft() {
+        $('#slider ul').animate({
+            left: + slideWidth
+        }, 200, function () {
+            $('#slider ul li:last-child').prependTo('#slider ul');
+            $('#slider ul').css('left', '');
+        });
+    };
+
+    function moveRight() {
+        $('#slider ul').animate({
+            left: - slideWidth
+        }, 200, function () {
+            $('#slider ul li:first-child').appendTo('#slider ul');
+            $('#slider ul').css('left', '');
+        });
+    };
+
+    $('a.control_prev').click(function () {
+        moveLeft();
+    });
+
+    $('a.control_next').click(function () {
+        moveRight();
+    });
+
+});
+
 //Keyboard support
 
 $(document).keydown(function(e) {
@@ -356,29 +422,29 @@ $(document).keydown(function(e) {
 
       case 37: // left
         console.log('left');
-        left();
-        lastEvent = e;
+        left(e);
+        //lastEvent = e;
         lastController = "kb";
         break;
 
       case 38: // forward
         console.log('forward');
-        start();
-        lastEvent = e;
+        start(e);
+        //lastEvent = e;
         lastController = "kb";
         break;
 
       case 39: // right
         console.log('right');
-        right();
-        lastEvent = e;
+        right(e);
+        //lastEvent = e;
         lastController = "kb";
         break;
 
       case 40: // backward
         console.log('backward');
-        back();
-        lastEvent = e;
+        back(e);
+        //lastEvent = e;
         lastController = "kb";
         break;
 
@@ -389,41 +455,67 @@ $(document).keydown(function(e) {
 });
 
 $(document).keyup(function(e) {
-  if($('body').is('.command')){
-    if (lastEvent && lastEvent.keyCode != e.keyCode) return;
-    switch(e.which) {
-      case 37: // left
-        console.log('stop left');
-        stop();
-        lastEvent = null;
-        lastController = "kb";
-        break;
+  var inter = setInterval(function () {
+    if($('body').is('.command')){
+      if (lastEvent && lastEvent.keyCode != e.keyCode) return;
+      switch(e.which) {
+        case 37: // left
+          if(!lastEvent){
+            stopFlag = true;
+            break;
+          }
+          console.log('stop left');
+          stop();
+          lastEvent = null;
+          lastController = "kb";
+          clearInterval(inter);
+          inter = 0;
+          break;
 
-      case 38: // up
-        console.log('stop up');
-        stop();
-        lastEvent = null;
-        lastController = "kb";
-        break;
+        case 38: // up
+          if(!lastEvent){
+            stopFlag = true;
+            break;
+          }
+          console.log('stop up');
+          stop();
+          lastEvent = null;
+          lastController = "kb";
+          clearInterval(inter);
+          inter = 0;
+          break;
 
-      case 39: // right
-        console.log('stop right');
-        stop();
-        lastEvent = null;
-        lastController = "kb";
-        break;
+        case 39: // right
+          if(!lastEvent){
+            stopFlag = true;
+            break;
+          }
+          console.log('stop right');
+          stop();
+          lastEvent = null;
+          lastController = "kb";
+          clearInterval(inter);
+          inter = 0;
+          break;
 
-      case 40: // down
-        console.log('stop down');
-        stop();
-        lastEvent = null;
-        lastController = "kb";
-        break;
+        case 40: // down
+          if(!lastEvent){
+            stopFlag = true;
+            break;
+          }
+          console.log('stop down');
+          stop();
+          lastEvent = null;
+          lastController = "kb";
+          clearInterval(inter);
+          inter = 0;
+          break;
 
-      default: return; // exit this handler for other keys
+        default: return; // exit this handler for other keys
+      }
+      e.preventDefault(); // prevent the default action (scroll / move caret)
     }
-    e.preventDefault(); // prevent the default action (scroll / move caret)
-  }
+  }, 0);
 });
 
 $('#switch1').change(function(){
