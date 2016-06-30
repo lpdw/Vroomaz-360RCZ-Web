@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var controlServer = "http://172.1.24.122";
+//var controlServer = "http://172.1.24.122";
+var controlServer = "http://requestb.in/1hag77w1";
 var request = require('request');
 
 /* index */
