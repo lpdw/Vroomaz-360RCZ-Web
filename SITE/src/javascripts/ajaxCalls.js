@@ -1,5 +1,5 @@
 //Ajax calls
-var controlServer = "http://localhost:3001";
+var controlServer = "http://192.168.1.239";
 
 //Moving forward
 function start() {

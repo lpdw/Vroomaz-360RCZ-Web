@@ -7,7 +7,7 @@ var reset = function(){
 }
 
 //Ajax calls
-var controlServer = "http://localhost:3001";
+var controlServer = "http://192.168.1.239";
 
 //Moving forward
 function start() {
@@ -236,6 +236,14 @@ function reportOnGamepad() {
           lastController = "gp";
           break;
 
+        case "BACK": // stop
+        case "START": // stop
+          console.log('stop');
+          stop();
+          lastEventGP = null;
+          lastController = "gp";
+          break;
+
         default:
           break;
       }
@@ -290,7 +298,7 @@ function reportOnGamepad() {
 
   // Pour les axes analogiques
   for(var i=0;i<gp.axes.length; i+=2) {
-    html+= "Stick "+(Math.ceil(i/2)+1)+": "+gp.axes[i]+","+gp.axes[i+1]+"<br/>";
+    html+= "Stick "+(Math.ceil(i/2)+1)+": "+ (Math.floor(gp.axes[i] * 100) / 100).toFixed(2) +","+(Math.floor(gp.axes[i+1] * 100) / 100).toFixed(2)+"<br/>";
   }
 
   $("#gamepadDisplay").html(html);
