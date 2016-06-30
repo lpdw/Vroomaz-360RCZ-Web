@@ -335,12 +335,8 @@ button:disabled {
 }
 
 body {
-  margin: 0;
-}
-
-.content {
   background-color: rgba(220, 20, 5, 0.7);
-  height: calc(100vh - 127px);
+  margin: 0;
 }
 
 h1,

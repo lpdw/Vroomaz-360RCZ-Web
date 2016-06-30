@@ -11,7 +11,7 @@ gcmq = require('gulp-group-css-media-queries');
 //Paths
 var paths = {
   styles: {
-    src: 'src/sass/*.sass',
+    src: 'src/sass/**/*.sass',
     dest: 'public/stylesheets'
   },
   scripts: {
