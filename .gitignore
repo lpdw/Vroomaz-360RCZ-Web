@@ -6,6 +6,9 @@
 Thumbs.db
 ehthumbs.db
 
+SITE/public/javascripts/*
+SITE/public/stylesheets/*
+
 # Folder config file
 Desktop.ini
 
