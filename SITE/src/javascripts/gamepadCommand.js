@@ -46,7 +46,7 @@ function reportOnGamepad() {
       switch(xinput[i]) {
         case "RIGHT": // left
           console.log('left');
-          left();
+          right();
           lastEventGP = i;
           lastController = "gp";
           break;
@@ -60,7 +60,7 @@ function reportOnGamepad() {
 
         case "LEFT": // right
           console.log('right');
-          right();
+          left();
           lastEventGP = i;
           lastController = "gp";
           break;
