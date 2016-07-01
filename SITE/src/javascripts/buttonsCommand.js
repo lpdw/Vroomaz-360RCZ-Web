@@ -18,47 +18,64 @@ var enableButtons = function()  {
 }
 
 $("#forward-button").mousedown(function(){
-  lastController = "b";
-  start();
+  start("ok");
   $("#forward-button").removeClass("activable");
-  $("#forward-button").on('mouseup', function(){
-    $("#forward-button").addClass("activable");
-    stop();
-  })
+  if($('#switch3').is(':checked')){
+    $("#forward-button").on('mouseup', function(){
+      $("#forward-button").addClass("activable");
+      if(!lastEvent){
+        console.log("stop flag rised");
+        stopFlag = true;
+        return;
+      }
+      stop();
+    })
+  }
 });
 
 $("#backward-button").mousedown(function(){
-  lastController = "b";
-  back();
+  back("ok");
   $("#backward-button").removeClass("activable");
   $("#backward-button").on('mouseup', function(){
     $("#backward-button").addClass("activable");
+    if(!lastEvent){
+      console.log("stop flag rised");
+      stopFlag = true;
+      return;
+    }
     stop();
   })
 });
 
 $("#right-button").mousedown(function(){
-  lastController = "b";
-  right();
+  right("ok");
   $("#right-button").removeClass("activable");
   $("#right-button").on('mouseup', function(){
     $("#right-button").addClass("activable");
+    if(!lastEvent){
+      console.log("stop flag rised");
+      stopFlag = true;
+      return;
+    }
     stop();
   })
 });
 
 $("#left-button").mousedown(function(){
-  lastController = "b";
-  left();
+  left("ok");
   $("#left-button").removeClass("activable");
   $("#left-button").on('mouseup', function(){
     $("#left-button").addClass("activable");
+    if(!lastEvent){
+      console.log("stop flag rised");
+      stopFlag = true;
+      return;
+    }
     stop();
   })
 });
 
 $("#stop-button").mousedown(function(){
-  lastController = "b";
   stop();
   $("#stop-button").removeClass("activable");
   $("#stop-button").on('mouseup', function(){

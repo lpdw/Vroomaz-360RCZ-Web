@@ -48,6 +48,7 @@ function back(e) {
     if(stopFlag){
       stop();
       stopFlag = null;
+      console.log("stopflag catched");
     }
   });
 }
@@ -61,6 +62,7 @@ function stop(callback) {
   })
   .done(function (msg) {
     console.log(msg);
+    lastEvent = null;
     $('#carDirection').html('');
     $("#stop-button").addClass("activated");
     $("#left-button").removeClass("activated");
@@ -93,6 +95,7 @@ function left(e) {
     if(stopFlag){
       stop();
       stopFlag = null;
+      console.log("stopflag catched");
     }
   });
 }
@@ -115,6 +118,7 @@ function right(e) {
     if(stopFlag){
       stop();
       stopFlag = null;
+      console.log("stopflag catched");
     }
   });
 }
