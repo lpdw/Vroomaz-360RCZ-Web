@@ -63,6 +63,15 @@ router.post('/mode/auto', function(req, res) {
   });
 });
 
+/* Mode line */
+router.post('/mode/line', function(req, res) {
+  request.post(controlServer, function (error, response, body) {
+    if (!error) {
+      res.status(200).send({command: 'auto mode'});
+    }
+  });
+});
+
 /* Mode manual command */
 router.post('/mode/man', function(req, res) {
   request.post(controlServer, function (error, response, body) {
