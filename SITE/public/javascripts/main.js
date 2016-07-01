@@ -3,7 +3,7 @@ var modeSelected;
 var stopFlag;
 
 //Ajax calls
-var controlServer = "http://localhost:3001";
+var controlServer = "http://172.24.1.122";
 
 //Moving forward
 function start(e) {
@@ -33,6 +33,8 @@ function start(e) {
         console.log("stopflag catched");
       }
     });
+  } else {
+    alert("Please select a mode with switch buttons");
   }
 }
 
@@ -134,7 +136,6 @@ var disableButtons = function() {
   $("#backward-button").prop('disabled', true);
   $("#left-button").prop('disabled', true);
   $("#right-button").prop('disabled', true);
-  stop();
   $("#stop-button").addClass('activated');
 }
 
@@ -142,7 +143,6 @@ var enableButtons = function()  {
   $("#backward-button").prop('disabled', false);
   $("#left-button").prop('disabled', false);
   $("#right-button").prop('disabled', false);
-  stop();
   $("#stop-button").addClass('activated');
 }
 
@@ -447,7 +447,7 @@ $(document).keydown(function(e) {
       case 32: // stop
         console.log('stop key pressed');
         stop();
-        lastEvent = e;
+        lastEvent = e; 
         break;
 
       case 37: // left

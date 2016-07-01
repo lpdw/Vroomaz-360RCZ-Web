@@ -5,7 +5,6 @@ var disableButtons = function() {
   $("#backward-button").prop('disabled', true);
   $("#left-button").prop('disabled', true);
   $("#right-button").prop('disabled', true);
-  stop();
   $("#stop-button").addClass('activated');
 }
 
@@ -13,7 +12,6 @@ var enableButtons = function()  {
   $("#backward-button").prop('disabled', false);
   $("#left-button").prop('disabled', false);
   $("#right-button").prop('disabled', false);
-  stop();
   $("#stop-button").addClass('activated');
 }
 

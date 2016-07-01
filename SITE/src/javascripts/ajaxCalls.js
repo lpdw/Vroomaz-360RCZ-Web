@@ -1,5 +1,5 @@
 //Ajax calls
-var controlServer = "http://localhost:3001";
+var controlServer = "http://172.24.1.122";
 
 //Moving forward
 function start(e) {
@@ -29,6 +29,8 @@ function start(e) {
         console.log("stopflag catched");
       }
     });
+  } else {
+    alert("Please select a mode with switch buttons");
   }
 }
 

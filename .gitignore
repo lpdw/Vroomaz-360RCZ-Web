@@ -8,6 +8,7 @@ ehthumbs.db
 
 SITE/public/javascripts/*
 SITE/public/stylesheets/*
+SITE/src/images/*
 
 # Folder config file
 Desktop.ini
