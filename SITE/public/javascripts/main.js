@@ -3,7 +3,7 @@ var modeSelected;
 var stopFlag;
 
 //Ajax calls
-var controlServer = "http://172.24.1.122";
+var controlServer = "http://192.168.1.239";
 
 //Moving forward
 function start(e) {
@@ -22,17 +22,17 @@ function start(e) {
       method: "POST"
     })
     .done(function (msg) {
-      lastEvent = e;
       console.log(msg);
-      $("#forward-button").addClass("activated");
-      $("#stop-button").removeClass("activated");
-      $('#carDirection').html('<i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i>');
-      if(stopFlag){
-        stop();
-        stopFlag = null;
-        console.log("stopflag catched");
-      }
     });
+    lastEvent = e;
+    $("#forward-button").addClass("activated");
+    $("#stop-button").removeClass("activated");
+    $('#carDirection').html('<i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i>');
+    if(stopFlag){
+      stop();
+      stopFlag = null;
+      console.log("stopflag catched");
+    }
   } else {
     alert("Please select a mode with switch buttons");
   }
@@ -47,16 +47,16 @@ function back(e) {
   })
   .done(function (msg) {
     console.log(msg);
-    lastEvent = e;
-    $("#backward-button").addClass("activated");
-    $("#stop-button").removeClass("activated");
-    $('#carDirection').html('<i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i>');
-    if(stopFlag){
-      stop();
-      stopFlag = null;
-      console.log("stopflag catched");
-    }
   });
+  lastEvent = e;
+  $("#backward-button").addClass("activated");
+  $("#stop-button").removeClass("activated");
+  $('#carDirection').html('<i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i>');
+  if(stopFlag){
+    stop();
+    stopFlag = null;
+    console.log("stopflag catched");
+  }
 }
 
 
@@ -68,19 +68,19 @@ function stop(callback) {
   })
   .done(function (msg) {
     console.log(msg);
-    lastEvent = null;
-    $('#carDirection').html('');
-    $("#stop-button").addClass("activated");
-    $("#left-button").removeClass("activated");
-    $("#right-button").removeClass("activated");
-    $("#backward-button").removeClass("activated");
-    $("#forward-button").removeClass("activated");
-    $("#avg").removeClass("turn-left");
-    $("#avd").removeClass("turn-left");
-    $("#avg").removeClass("turn-right");
-    $("#avd").removeClass("turn-right");
-    if(callback) callback();
   });
+  lastEvent = null;
+  $('#carDirection').html('');
+  $("#stop-button").addClass("activated");
+  $("#left-button").removeClass("activated");
+  $("#right-button").removeClass("activated");
+  $("#backward-button").removeClass("activated");
+  $("#forward-button").removeClass("activated");
+  $("#avg").removeClass("turn-left");
+  $("#avd").removeClass("turn-left");
+  $("#avg").removeClass("turn-right");
+  $("#avd").removeClass("turn-right");
+  if(callback) callback();
 }
 
 
@@ -91,19 +91,19 @@ function left(e) {
     method: "POST"
   })
   .done(function (msg) {
-    lastEvent = e;
     console.log(msg);
-    $("#avg").addClass("turn-left");
-    $("#avd").addClass("turn-left");
-    $("#left-button").addClass("activated");
-    $("#stop-button").removeClass("activated");
-    $('#carDirection').html('<i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>');
-    if(stopFlag){
-      stop();
-      stopFlag = null;
-      console.log("stopflag catched");
-    }
   });
+  lastEvent = e;
+  $("#avg").addClass("turn-left");
+  $("#avd").addClass("turn-left");
+  $("#left-button").addClass("activated");
+  $("#stop-button").removeClass("activated");
+  $('#carDirection').html('<i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>');
+  if(stopFlag){
+    stop();
+    stopFlag = null;
+    console.log("stopflag catched");
+  }
 }
 
 
@@ -114,19 +114,19 @@ function right(e) {
     method: "POST"
   })
   .done(function (msg) {
-    lastEvent = e;
     console.log(msg);
-    $("#avg").addClass("turn-right");
-    $("#avd").addClass("turn-right");
-    $("#right-button").addClass("activated");
-    $("#stop-button").removeClass("activated");
-    $('#carDirection').html('<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>');
-    if(stopFlag){
-      stop();
-      stopFlag = null;
-      console.log("stopflag catched");
-    }
   });
+  lastEvent = e;
+  $("#avg").addClass("turn-right");
+  $("#avd").addClass("turn-right");
+  $("#right-button").addClass("activated");
+  $("#stop-button").removeClass("activated");
+  $('#carDirection').html('<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>');
+  if(stopFlag){
+    stop();
+    stopFlag = null;
+    console.log("stopflag catched");
+  }
 }
 
 //Html buttons support
@@ -441,13 +441,15 @@ $(document).keydown(function(e) {
   if($('body').is('.command')){
     if ((lastEvent && $('#switch3').is(':checked'))
         | ($('#switch2').is(':checked') | $('#switch1').is(':checked')) && e.keyCode != 32 && e.keyCode != 38
-        | (lastEvent && lastEvent.keyCode == e.keyCode)) return;
+        | (lastEvent && lastEvent.keyCode == e.keyCode)) {
+          return;
+        }
 
     switch(e.which) {
       case 32: // stop
         console.log('stop key pressed');
         stop();
-        lastEvent = e; 
+        lastEvent = e;
         break;
 
       case 37: // left

@@ -4,13 +4,15 @@ $(document).keydown(function(e) {
   if($('body').is('.command')){
     if ((lastEvent && $('#switch3').is(':checked'))
         | ($('#switch2').is(':checked') | $('#switch1').is(':checked')) && e.keyCode != 32 && e.keyCode != 38
-        | (lastEvent && lastEvent.keyCode == e.keyCode)) return;
+        | (lastEvent && lastEvent.keyCode == e.keyCode)) {
+          return;
+        }
 
     switch(e.which) {
       case 32: // stop
         console.log('stop key pressed');
         stop();
-        lastEvent = e; 
+        lastEvent = e;
         break;
 
       case 37: // left
