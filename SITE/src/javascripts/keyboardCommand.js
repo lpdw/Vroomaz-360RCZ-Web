@@ -10,7 +10,7 @@ $(document).keydown(function(e) {
       case 32: // stop
         console.log('stop key pressed');
         stop();
-        lastEvent = e;
+        lastEvent = e; 
         break;
 
       case 37: // left

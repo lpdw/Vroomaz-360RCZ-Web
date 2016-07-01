@@ -7,6 +7,8 @@ concat = require('gulp-concat'),
 notify = require('gulp-notify'),
 sass = require('gulp-sass'),
 gcmq = require('gulp-group-css-media-queries');
+imagemin = require('gulp-imagemin');
+
 
 //Paths
 var paths = {
@@ -18,6 +20,10 @@ var paths = {
     src: 'src/javascripts/*.js',
     dest: 'public/javascripts'
   },
+  images: {
+    src: 'src/images/*',
+    dest: 'public/images'
+  }
 };
 
 // Notify
@@ -32,6 +38,15 @@ var plumberErrorHandler = { errorHandler: notify.onError({
   message: "Error: <%= error.message %>"
 })
 };
+
+//Image min
+gulp.task('imagemin', function () {
+
+	return gulp.src(paths.images.src)
+    .pipe(imagemin())
+		.pipe(gulp.dest(paths.images.dest));
+
+});
 
 // Scripts
 gulp.task('scripts', function () {
